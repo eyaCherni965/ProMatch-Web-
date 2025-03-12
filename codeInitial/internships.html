@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Match - Acceuil</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body class="body-container">
+    <header>
+      <div class="header-container">
+        <div class="logo">
+            <a href="acceuil_TCH099.html">
+            <img src="./img/matchLogo.png" alt="Logo"></a>
+        </div>
+      <nav class="nav-left">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="internships.html">Internships</a></li>
+          <li><a href="applications.html">Applications</a></li>
+       </ul>
+      </nav>
+      <nav class="nav-right">
+        <ul>
+            <a href="acceuil_TCH099.html" class="lang-btn">FR 🇫🇷</a>
+            <a href="connexion.html" class="login-btn">Connection</a>
+        </ul>
+      </nav>
+    </div>
+    </header>
+    <main>
+        <br>
+        <h2>Put your internships offers here !</h2><br>
+        <form action="/jspEncore" method="post">
+          <div class="columns">
+            <div class="column-left">
+              <ul>
+                <li class="group">
+                  <label for="compagnie">Company name&nbsp;:</label>
+                  <input type="text" id="comp" name="nom_compagnie" />
+                </li>
+                <li class="group">
+                  <label for="departement">Department name&nbsp; :</label>
+                  <input type="text" id="dep" name="nom_departement" />
+                </li>
+                <li class="group">
+                  <label for="manager">Responsable&nbsp;:</label>
+                  <textarea id="manager" name="nom_responsable"></textarea>
+                </li>
+                <li class="group">
+                  <label for="poste">Job title&nbsp;:</label>
+                  <input type="text" id="poste" name="nom_poste" />
+                </li>
+                <li class="group">
+                  <label for="description">Job description&nbsp;:</label>
+                  <textarea id="description" name="description_poste"></textarea>
+                </li>
+              </ul>
+            </div>
+            <div class="column-right">
+              <label for="image"> Put a picture for the offer&nbsp;:</label>
+              <input type="file" id="image" accept="image/*" onchange="previewImage(event)">    
+            </div>  
+          </div>
+          <div class="button-container">
+            <button type="submit">Submit the offer</button>
+            <button type="reset">Erase</button>
+          </div>
+        </form>
+    </main>
+</body>

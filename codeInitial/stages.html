@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Match - Acceuil</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body class="body-container">
+    <header>
+      <div class="header-container">
+        <div class="logo">
+            <a href="acceuil_TCH099.html">
+            <img src="./img/matchLogo.png" alt="Logo"></a>
+        </div>
+      <nav class="nav-left">
+        <ul>
+          <li><a href="acceuil_TCH099.html">Accueil</a></li>
+          <li><a href="stages.html">Stages</a></li>
+          <li><a href="candidatures.html">Candidatures</a></li>
+       </ul>
+      </nav>
+      <nav class="nav-right">
+        <ul>
+            <a href="home.html" class="lang-btn">EN 🇬🇧</a>
+            <a href="connexion.html" class="login-btn">Connexion</a>
+        </ul>
+      </nav>
+    </div>
+    </header>
+    <main>
+        <br>
+        <h2>Déposez vos offres de stage ici !</h2><br>
+        <form action="/jspEncore" method="post">
+          <div class="columns">
+            <div class="column-left">
+              <ul>
+                <li class="group">
+                  <label for="compagnie">Nom de la compagnie&nbsp;:</label>
+                  <input type="text" id="comp" name="nom_compagnie" />
+                </li>
+                <li class="group">
+                  <label for="departement">Nom du département</label>
+                  <input type="text" id="dep" name="nom_departement" />
+                </li>
+                <li class="group">
+                  <label for="poste">Titre du poste&nbsp;:</label>
+                  <input type="text" id="poste" name="nom_poste" />
+                </li>
+                <li class="group">
+                  <label for="description">Description du poste&nbsp;:</label>
+                  <textarea id="description" name="description_poste"></textarea>
+                </li>
+              </ul>
+            </div>
+            <div class="column-right">
+              <label for="image"> Déposez une image pour l'offre&nbsp;:</label>
+              <input type="file" id="image" accept="image/*" onchange="previewImage(event)">    
+            </div>  
+          </div>
+          <div class="button-container">
+            <button type="submit">Soumettre l'offre</button>
+            <button type="reset">Effacer</button>
+          </div>
+        </form>
+    </main>
+</body>
