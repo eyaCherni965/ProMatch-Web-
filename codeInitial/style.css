@@ -1,4 +1,4 @@
-/* Reset */
+/* Reset 
 * {
   margin: 0;
   padding: 0;
@@ -14,13 +14,13 @@ body {
   background-color: #EFE9E1;
 }
 
-/* Titres */
+/* Titres 
 h2, h3, h4 {
   color: #4b0000;
   font-family: "Garamond", serif;
 }
 
-/* Entête */
+/* Entête 
 header {
   background-color: #D1C7BD;
 }
@@ -38,7 +38,7 @@ header {
   margin-right: 30px;
 }
 
-/* Conteneur principal */
+/* Conteneur principal 
 .body-container {
   width: 100%;
   margin: 0;
@@ -101,7 +101,7 @@ main {
   background-color: #F3E3E2;
   border-radius: 10px;
   padding: 10px;
-}
+}*/
 
 /* Formulaire */
 form ul {
@@ -181,4 +181,35 @@ button {
 }
 button:hover {
   background-color: #720000;
+}
+/****************************************PAGE DE LOGIN*******************************************/
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0px; 
+}
+
+login-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0,1);
+
+}
+
+login-text{
+text-align: center;
+justify-items: center;
+font-size: 10px; 
+font-style:italic; 
+font-family: Arial, Helvetica, sans-serif;
 }
