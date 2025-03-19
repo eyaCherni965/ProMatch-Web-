@@ -1,0 +1,64 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Containers de la page */
+body {
+column-count: 2;  /* Crée deux colonnes */
+column-gap: 0px;
+text-align: center;
+font-family: "Garamond", serif;
+color: white;
+}
+
+/* Colonnes */
+.column-etudiant, .column-employeur {
+  height: 100vh;  /* Les colonnes prennent toute la hauteur de l'écran */
+  background-size: cover;  /* Les images prennent toute la surface de la colonne */
+  background-position: center;  /* Les images sont centrées */
+  text-align: center;
+  filter: blur(3px);
+  transition-delay: 0.1s;
+}
+
+.column-etudiant {
+  background-image: url("img/Image 1 - MEM vs MBA_0_0.jpg");
+}
+
+.column-employeur {
+  background-image: url("img/business-3152586_1280.jpg");
+}
+
+.text-employeur {
+  color: white;
+  font-size: 24px ;
+  position : absolute;
+  top : 50%;
+  left: 75%;
+  transform : translate(-50%, -50%);
+  z-index : 1 ;
+  filter: none;
+}
+
+.text-etudiant {
+  color: white;
+  font-size: 24px ;
+  position : absolute;
+  top : 50%;
+  left: 25%;
+  transform : translate(-50%, -50%);
+  z-index : 1 ;
+  filter: none;
+}
+
+.column-etudiant:hover, .column-employeur:hover {
+  filter: none;
+  transition-delay: 0.2s;
+}
+
+h1, h2 {
+  text-shadow: 2px 2px black;
+}
