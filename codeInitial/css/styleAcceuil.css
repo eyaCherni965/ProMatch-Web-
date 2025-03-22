@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    min-height: 100vh;
+    margin: 0px; 
+    padding: 0px;
+    font-family: monospace;
+  }
+
+h1{
+    text-align: left;
+    font-size: 3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: black;
+  }
+
+main{
+    margin: 25px;
+
+  }
+
+/* Formulaire */
+form{
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0,1);
+  text-align: left;
+}
+
+form ul {
+  list-style-type: none;
+  color: #4b0000;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label {
+  width: 200px;
+  text-align: left; 
+  margin-right: 10px;
+  font-family: "Garamond", serif;
+}
+
+input, textarea {
+  flex: 2;
+  padding: 8px;
+  border: 1px solid #D1C7BD;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+#description {
+  min-height: 100px;
+}
+
+/* Mise en page en colonnes */
+.columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 20px;
+  text-align: left;
+  align-items: start;
+}
+
+.column-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.column-right {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .columns {
+      grid-template-columns: 1fr; /* Stack columns vertically */
+  }
+}
+
+/* Boutons */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+button {
+  padding: 10px 10px;
+  background-color: #4b0000;
+  color: #D1C7BD;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+button:hover {
+  background-color: #720000;
+}
+
+ /******************************************PAGE D'ACCEUIL************************************************/
+ ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
