@@ -4,13 +4,15 @@
   box-sizing: border-box;
 }
 
-body{
+
+  body{
     display: flex;
-    justify-content: left;
-    align-items: left;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    margin: 0px; 
-    padding: 0px;
+    margin-left: 50px; 
+    padding: 30px;
+    background: linear-gradient(90deg, #f7f7f7 0%, rgb(222, 220, 220) 100%);
     font-family: monospace;
   }
 
@@ -25,6 +27,10 @@ main{
     margin: 25px;
 
   }
+
+.msgBienvenue{
+  margin-bottom: 50px;
+}
 
 /* Formulaire */
 form{
@@ -103,7 +109,7 @@ input, textarea {
 }
 
 button {
-  padding: 10px 10px;
+  padding: 10px;
   background-color: #4b0000;
   color: #D1C7BD;
   border: none;
@@ -112,27 +118,55 @@ button {
   margin: 5px;
 }
 button:hover {
-  background-color: #720000;
+  background-color: #D1C7BD;
 }
 
  /******************************************PAGE D'ACCEUIL************************************************/
- ul {
+/* Liste de navigation dans la sidebar */
+.sidebar ul {
   list-style-type: none;
-  margin: 0;
+  margin-top: 5px;
   padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
 }
 
-li a {
+/* Liens dans la sidebar */
+.sidebar li a {
   display: block;
-  color: #000;
-  padding: 8px 16px;
+  color: #fff;
+  padding: 12px 20px;
   text-decoration: none;
 }
 
-/* Change the link color on hover */
-li a:hover {
-  background-color: #555;
-  color: white;
+/* Effet au survol */
+.sidebar li a:hover {
+  background-color: #D1C7BD;
+  color: #fff;
 }
+/* Bouton menu */
+.menu-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  color: black; /* même couleur que ton thème */
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Sidebar */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: #4b0000;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  padding-top: 60px;
+}
+
+
