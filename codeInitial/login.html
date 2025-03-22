@@ -4,17 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./style2.css">
-    <title>Login</title>
+    <title>ProMatch - Connexion</title>
 </head>
 <body>
-    <div class = "login-container">
-    <h1>Match</h1>
-        <form>
-            <a href="inscription.html">
-            <button type="submit">S'inscrire</a></button>
-            <p>Déjà un compte?</p>
-            <button type="submit">Se connecter</button>   
+    <div class="login-container">
+        <div class="login-box connexion">
+            <form action="">       
+            <h2>Connexion</h2>
+
+            <div class = "login-input">
+            <input type="email" id="email" name="email" placeholder="Adresse Couriel" required><br><br>
+            </div>
+
+            <div class = "login-input">
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required><br><br> 
+            </div>
+
+            <button type="submit" class="btn">Se connecter</button>
+            <p>Vous n'avez pas de compte? Inscrivez-vous dès aujourd'hui!</p>
         </form>
     </div>
+
+
+    <div class="login-box inscription">
+    <form>
+        <h2>Inscription</h2>
+        <div class="inscription-input">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" required><br><br>
+        </div>
+
+    <div class="inscription-input">
+          <label for="prenom">Prenom</label>
+          <input type="text" id="prenom" name="prenom" required><br><br>
+          </div>
+
+          <div class="inscription-input">
+          <label for="email">Adresse Couriel</label>
+          <input type="email" id="email" name="email" placeholder="exemple123@gmail.com" required><br><br>
+          </div>
+
+          <div class="inscription-input">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" placeholder="********" required><br><br>
+          </div>
+
+          <div class="inscription-input">
+          <label for="password2">Confirmez votre mot de passe</label>
+          <input type="password" id="password2" name="password" placeholder="********" required><br><br>
+          </div>
+
+          <div class="inscription-input">
+          <label for="nom-entreprise">Nom de l'entreprise</label>
+          <input type="text" id="nom-entreprise" name="nom-entreprise" required><br><br>
+          </div>
+
+          <button type="submit" class="btn">S'inscrire</button>
+          <p>Déjà un compte? Connectez vous!</p>ç
+        </form>
+    </div>
+          <div class="toggle-inscription">
+            <div class="toggle-position gauche">
+                <h1>Bienvenue sur Pro Match</h1>
+                <p>Vous n'avez pas de compte?</p>
+                <button class="btn-inscrire">S'inscrire</button>
+            </div>
+            <div class="toggle-position droite">
+                <h1>Bonjour!</h1>
+                <p>Déjà un compte?</p>
+                <button class="btn-inscrire">Se connecter</button>
+            </div>
+          </div>
+        </div>
 </body>
 </html>
