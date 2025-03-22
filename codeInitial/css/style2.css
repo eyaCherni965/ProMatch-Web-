@@ -131,7 +131,7 @@ body{
 
   .inscription-input input{
     font-size: 15px;
-    padding: 8px;
+    padding: 5px;
     justify-content: space-evenly;
     border-radius: 10px;
     font-size: 15px;
@@ -169,7 +169,6 @@ body{
     flex-direction: column;
     color:white;
     z-index: 2;
-    font-family: Arial, Helvetica, sans-serif;
     transition: 0.3ms ease-in-out;
   }
 
@@ -203,7 +202,9 @@ body{
     height: 50px;
     background: transparent;
     border : 2px dotted white;
+    border-radius: 10px;
     color:white;
+    cursor: pointer;
   }
 
   .btn-connecter{
@@ -211,9 +212,21 @@ body{
     height: 50px;
     background: transparent;
     border : 2px dotted white;
+    border-radius: 10px;
     color:white;
+    cursor: pointer;
   }
 
+  .btn-inscrire:hover{
+    transition: fade 0.5s;
+    background:#551919
+  }
+
+
+  .btn-connecter:hover{
+    transition: fade 0.5s;
+    background:#551919
+  }
   /************************************************CSS EN LIEN AVEC LE JAVASCRIPT*****************************************************************/
 
   .login-container.active .toggle-inscription::before {
