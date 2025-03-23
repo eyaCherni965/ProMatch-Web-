@@ -17,6 +17,7 @@ main h2{
 .candidature{
   display: flex;
   justify-content: space-evenly;
+  margin: 5px;
   flex-direction: row;
   align-items: center;
   width:50vh;
