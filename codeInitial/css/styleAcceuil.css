@@ -38,7 +38,7 @@ form{
   border: 1px solid black;
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0,1);
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
   text-align: left;
 }
 
@@ -118,7 +118,7 @@ button {
   margin: 5px;
 }
 button:hover {
-  background-color: #D1C7BD;
+  filter: brightness(5px);
 }
 
  /******************************************PAGE D'ACCEUIL************************************************/
@@ -135,6 +135,8 @@ button:hover {
   color: #fff;
   padding: 12px 20px;
   text-decoration: none;
+  transition: background-color 0.2s ease;
+  
 }
 
 /* Effet au survol */
@@ -150,12 +152,11 @@ button:hover {
   font-size: 24px;
   background-color: transparent;
   border: none;
-  color: black; /* même couleur que ton thème */
+  color: black;
   cursor: pointer;
   z-index: 1001;
 }
 
-/* Sidebar */
 .sidebar {
   height: 100%;
   width: 0;
@@ -167,6 +168,31 @@ button:hover {
   overflow-x: hidden;
   transition: width 0.3s ease;
   padding-top: 60px;
+  color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
 }
+
+/* Appliqué seulement quand la sidebar est ouverte */
+.sidebar.open {
+  width: 250px;
+  border-style: solid;
+  border-color: #660000;
+  border-width: 3px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: black;
+  cursor: pointer;
+}
+
+
 
 
