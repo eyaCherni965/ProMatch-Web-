@@ -1,14 +1,13 @@
-
-main h2{
-  font-size: 2.5rem;
-  font-style: italic;
-  text-align: center;
+main{
+  display: flex;
+  justify-content: center;
+  align-items: top;
 }
  
 .main-container{
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   width: 100vh; 
 
@@ -17,21 +16,24 @@ main h2{
 .candidature{
   display: flex;
   justify-content: space-evenly;
-  margin: 5px;
-  flex-direction: row;
+  margin: 8px;
+  flex-direction: column;
   align-items: center;
-  width:50vh;
+  width: 500%;
   border: 2px solid #ccc;
-  border-radius: 10px;
-  height: 50vh;
+  border-radius: 4500px;
+  height: 20vh;
   cursor: pointer;
+  overflow: hidden;
 }
+
 
 h3{
   display: flex;
   justify-content: center;
   font-size: 1.5rem;
-  justify-content: start;
+  margin-bottom: 10px;
+  text-align: right;
 }
 
 .candidature.acceptee:hover{
@@ -56,4 +58,4 @@ h3{
 transition: 0.5 ease-in-out;
 background: #4b0000;
 color: grey;
-}
+}*/
