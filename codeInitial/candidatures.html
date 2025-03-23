@@ -2,33 +2,38 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>ProMatch - Acceuil</title>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <title>ProMatch - Canditature</title>
+  <link rel="stylesheet" type="text/css" href="./styleCandid.css">
+  <link rel="stylesheet" type="text/css" href="./styleAcceuil.css">
+  <script type="text/javascript" src="./javascript/navbar.js"></script>
 </head>
 <body class="body-container">
-    <header>
-      <div class="header-container">
-        <div class="logo">
-            <a href="acceuil_TCH099.html">
-            <img src="./img/matchLogo.png" alt="Logo"></a>
-        </div>
-      <nav class="nav-left">
-        <ul>
-          <li><a href="acceuil_TCH099.html">Accueil</a></li>
-          <li><a href="stages.html">Stages</a></li>
-          <li><a href="candidatures.html">Candidatures</a></li>
-       </ul>
-      </nav>
-      <nav class="nav-right">
-        <ul>
-            <a href="home.html" class="lang-btn">EN 🇬🇧</a>
-            <a href="connexion.html" class="login-btn">Connexion</a>
-        </ul>
-      </nav>
-    </div>
-    </header>
-    <main>
-        <br>
-        <h2>Ici ce trouve les applications à vos offres de stage !</h2><br>
+  <header class="header-acceuil">
+    <button id="menuBtn" class="menu-button">☰</button>
+    <div id="sidebar" class="sidebar">
+      <ul>
+        <li><a href="acceuil_TCH099.html">Accueil</a></li>
+        <li><a href="stages.html">Stages</a></li>
+        <li><a href="candidatures.html">Candidatures</a></li>
+        <li><a href="home.html">EN</a></li>
+        <li><a href="login.html">Connexion</a></li>
+      </ul>
+    </div>      
+  </header>
+  <main>
+       <h2>État des applications</h2>
+       <div class="main-container">
+            <div class="candidature acceptee">
+                <h3>acceptée</h3>
+            </div>
+              
+            <div class="candidature refusee">
+                <h3>Refusée</h3>
+            </div>
+              
+            <div class="candidature enAttente">
+                <h3>En Attente</h3> 
+            </div>
+       </div>
     </main>
 </body>
