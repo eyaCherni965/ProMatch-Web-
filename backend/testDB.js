@@ -9,7 +9,7 @@ async function testDatabase() {
     console.log('Connected to the database');
 
     // Exécuter une requête SQL
-    const result = await sql.query(`SELECT * FROM Users`);
+    const result = await sql.query(`SELECT * FROM Etudiant`); 
     console.log('Query result:', result.recordset); // Afficher les résultats
 
     // Fermer la connexion (optionnel, mais recommandé)
