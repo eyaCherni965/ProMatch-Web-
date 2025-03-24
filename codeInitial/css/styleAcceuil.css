@@ -25,7 +25,7 @@ h1{
 
 main{
     margin: 25px;
-
+    text-align: left;
   }
 
 .msgBienvenue{
@@ -201,6 +201,37 @@ button:hover {
 body.sidebar-open .menu-button {
   display: none;
   background-color: red; /* pour voir si la classe est bien appliquée */
+}
+
+/* Boites d'informations */
+.boites{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 100px;
+}
+
+.boite{
+  background-color: transparent;
+  border: 1px solid #4b0000;
+  border-radius: 5px;
+  padding: 20px;
+  flex: 1;
+  text-align: left;
+}
+
+.learnmore{
+  padding: 10px;
+  background-color: #4b0000;
+  color: #f7f7f7;
+  border-radius: 5px;
+  border-color: #4b0000;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.learnmore:hover {
+  background-color: #660000;
 }
 
 
