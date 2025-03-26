@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
     server: 'mysqlserver0411.database.windows.net',
     database: 'mySampleDatabase',
     options: {
-      encrypt: true, // obligatoire pour Azure
+      encrypt: true, 
       trustServerCertificate: false
     }
   };
