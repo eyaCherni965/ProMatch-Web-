@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const sql = require('mssql');
+require('dotenv').config();
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -25,3 +26,12 @@ app.get('/', (req, res) => {
     .catch(err => {
       console.error('Erreur de connexion :', err);
     });
+
+const PORT = 8080;
+
+app.use(express.json());          
+app.use('/', routes);             
+
+app.listen(PORT, () => {
+  console.log(`Serveur écoute sur http://localhost:${PORT}`);
+});
