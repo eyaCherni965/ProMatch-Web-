@@ -158,7 +158,7 @@ button:hover {
   padding: 4px 8px;
   cursor: pointer;
   z-index: 1001;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 1s ease, color 1s ease, border-color 1s ease;
 }
 
 
@@ -181,7 +181,7 @@ button:hover {
 .sidebar.open {
   width: 250px;
   border-style: solid;
-  border-color: #660000;
+  border-color: #260000;
   border-width: 3px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -200,8 +200,16 @@ button:hover {
 
 body.sidebar-open .menu-button {
   display: none;
-  background-color: red; /* pour voir si la classe est bien appliquée */
 }
+
+hr {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #260000;
+  border-style: none;
+  border-top: 1px solid;
+  }
 
 /* Boites d'informations */
 .boites{
@@ -231,7 +239,7 @@ body.sidebar-open .menu-button {
 }
 
 .learnmore:hover {
-  background-color: #660000;
+  background-color: #260000;
 }
 
 
