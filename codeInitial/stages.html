@@ -2,31 +2,30 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>ProMatch - Acceuil</title>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <title>ProMatch - Stages</title>
+  <link rel="stylesheet" type="text/css" href="./css/styleAcceuil.css">
+  <script type="text/javascript" src="./javascript/navbar.js"></script>
 </head>
 <body class="body-container">
-    <header>
-      <div class="header-container">
-        <div class="logo">
-            <a href="acceuil_TCH099.html">
-            <img src="./img/matchLogo.png" alt="Logo"></a>
-        </div>
-      <nav class="nav-left">
-        <ul>
-          <li><a href="acceuil_TCH099.html">Accueil</a></li>
-          <li><a href="stages.html">Stages</a></li>
-          <li><a href="candidatures.html">Candidatures</a></li>
-       </ul>
-      </nav>
-      <nav class="nav-right">
-        <ul>
-            <a href="home.html" class="lang-btn">EN 🇬🇧</a>
-            <a href="connexion.html" class="login-btn">Connexion</a>
-        </ul>
-      </nav>
-    </div>
-    </header>
+  <header class="header-acceuil">
+    <button id="menuBtn" class="menu-button">☰</button>
+    <div id="sidebar" class="sidebar">
+      <ul>
+        <button id="closeBtn" class="close-btn">&times;</button>
+        <li><a href="acceuil_TCH099.html">Accueil</a></li>
+        <hr>
+        <li><a href="stages.html">Stages</a></li>
+        <hr>
+        <li><a href="candidatures.html">Candidatures</a></li>
+        <hr>
+        <li><a href="profil.html">Profil</a></li>
+        <hr>
+        <li><a href="login.html">Connexion</a></li>
+        <hr>
+        <li><a href="home.html">EN</a></li>
+      </ul>
+    </div>      
+  </header>
     <main>
         <br>
         <h2>Déposez vos offres de stage ici !</h2><br>
@@ -36,25 +35,45 @@
               <ul>
                 <li class="group">
                   <label for="compagnie">Nom de la compagnie&nbsp;:</label>
-                  <input type="text" id="comp" name="nom_compagnie" />
+                  <input type="text" id="comp" name="nom_compagnie" required/>
                 </li>
                 <li class="group">
                   <label for="departement">Nom du département</label>
-                  <input type="text" id="dep" name="nom_departement" />
+                  <input type="text" id="dep" name="nom_departement" required/>
+                </li>
+                <li class="group">
+                  <label for="coordinateur">Coordinateur&nbsp;:</label>
+                  <input type="text" id="coordo" name="coordinateur" required/>
                 </li>
                 <li class="group">
                   <label for="poste">Titre du poste&nbsp;:</label>
-                  <input type="text" id="poste" name="nom_poste" />
+                  <input type="text" id="poste" name="nom_poste" required/>
                 </li>
                 <li class="group">
-                  <label for="description">Description du poste&nbsp;:</label>
-                  <textarea id="description" name="description_poste"></textarea>
+                  <label for="duree">Durée du stage (en mois)&nbsp;:</label>
+                  <input type="text" id="duree" name="duree_stage" required/>
                 </li>
               </ul>
             </div>
             <div class="column-right">
-              <label for="image"> Déposez une image pour l'offre&nbsp;:</label>
-              <input type="file" id="image" accept="image/*" onchange="previewImage(event)">    
+              <ul>
+                <li class="group">
+                  <label for="description">Description du poste&nbsp;:</label>
+                  <textarea type="text" id="description" name="description_poste" required></textarea>
+                </li>
+                <li class="group">
+                  <label for="adresse">Adresse&nbsp;:</label>
+                  <input type="text" id="adress" name="adresse" required/>
+                </li>
+                <li class="group">
+                  <label for="image"> Dépot d'image (url)&nbsp;:</label>
+                  <input type="text" id="image" name="image_offre" required> 
+                </li>
+                <li class="group">
+                  <label for="taux_horaire">Taux horaire ($)&nbsp;:</label>
+                  <input type="number" min="17.75" max="10000.00" step="0.01" id="taux_horaire" name="salaire"/>
+                </li>
+              </ul>
             </div>  
           </div>
           <div class="button-container">

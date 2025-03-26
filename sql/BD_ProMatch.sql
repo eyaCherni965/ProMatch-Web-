@@ -23,13 +23,15 @@ CREATE TABLE Etudiant (
 CREATE TABLE Stage (
     id_stage DECIMAL(10, 0) PRIMARY KEY,    
     coordinateur VARCHAR(50) NOT NULL,
+    nom_departement VARCHAR(50) NOT NULL, 
     nom_poste VARCHAR(50) NOT NULL,
     duree DECIMAL(10, 0) NOT NULL CHECK (duree > 0), 
-    description VARCHAR(500) NOT NULL, 
+    desc_poste VARCHAR(500) NOT NULL, 
     taux_horaire DECIMAL(10, 2) NOT NULL CHECK (taux_horaire > 0), 
     adresse VARCHAR(100) NOT NULL UNIQUE,
     courriel VARCHAR(100) NOT NULL CHECK (courriel LIKE '%@%.%'), 
-    id_employeur DECIMAL(10, 0) REFERENCES Employeur(id_employeur) 
+    id_employeur DECIMAL(10, 0) REFERENCES Employeur(id_employeur),
+    url_image VARCHAR(200) NOT NULL
 );
 
 -- Table CV
