@@ -59,7 +59,6 @@ create table inscription (
    nom            varchar(40) not null,
    prenom         varchar(40) not null,
    courriel       varchar(100) not null unique,
-   telephone      varchar(20) not null,
    mot_de_passe   varchar(50),
    id_etudiant    decimal(10,0)
       references etudiant ( id_etudiant ),
