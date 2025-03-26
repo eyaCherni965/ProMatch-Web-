@@ -1,22 +1,23 @@
 
+const express = require('express');
+let testUser =[];
+
+module.exports = (db) => {
+    const router = express.Router();
+
 //API connexion:
-app.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
     const { email, password } = req.body;
-    if (email === testUser.email && password === testUser.password) {
-        res.send('Vous êtes connectés !');
-    } else {
-        res.status(401).send('Email ou mot de passe incorrect');
+    const usager = testUser.find(u => u.adresseCourriel === email && u.motDePasse === password);
+    if(usager){
+        res.send("Connexion réussie");
+    }else{
+        res.status(401).send("Adresse courriel ou mot de passe incorrect");
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Serveur écoute sur le port ${PORT}`);
-});
-
-//API inscription:
-let testUser = [];
-
-app.post('/inscription', (req, res) => {
+//API inscription
+router.post('/inscription', (req, res) => {
     const {nom, prenom, adresseCourriel, motDePasse, confirmerMDP, nomEntreprise} = req.body;
     if (!nom || !prenom || !adresseCourriel || !motDePasse || !confirmerMDP || !nomEntreprise) {
         return res.status(400).json({success: false, message:'Veuillez remplir tous les champs!'});
@@ -35,7 +36,6 @@ app.post('/inscription', (req, res) => {
 return res.status(201).json({success: true, message:'Utilisateur créé avec succès!'});
 });
 
-app.listen(PORT, () => {
-    console.log(`Serveur écoute sur le port ${PORT}`);
+return router;
    
-});
+};
