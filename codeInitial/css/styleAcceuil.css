@@ -69,7 +69,7 @@ input, textarea {
   flex: 2;
   padding: 8px;
   border: 2px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   margin: 5px;
   min-width: 400px;
 }
