@@ -31,7 +31,7 @@ CREATE TABLE Stage (
     adresse VARCHAR(100) NOT NULL UNIQUE,
     courriel VARCHAR(100) NOT NULL CHECK (courriel LIKE '%@%.%'), 
     id_employeur DECIMAL(10, 0) REFERENCES Employeur(id_employeur),
-    url_image VARCHAR(200) NOT NULL
+    url_image VARCHAR(200) NULL
 );
 
 -- Table CV
