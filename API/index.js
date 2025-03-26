@@ -6,11 +6,6 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Bienvenue sur le serveur Express !');
   });
-<<<<<<< HEAD
-
-
-  
-=======
   
   const config = {
     user: 'azureuser',
@@ -30,7 +25,3 @@ app.get('/', (req, res) => {
     .catch(err => {
       console.error('❌ Erreur de connexion :', err);
     });
-  
-  
-  
->>>>>>> 87ce3db38451ee2ad3a822f3c5ab710da841119b
