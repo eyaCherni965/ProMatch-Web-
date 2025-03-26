@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
   
   sql.connect(config)
     .then(() => {
-      console.log('✅ Connecté à SQL Server');
+      console.log('Connecté à SQL Server');
     })
     .catch(err => {
-      console.error('❌ Erreur de connexion :', err);
+      console.error('Erreur de connexion :', err);
     });
