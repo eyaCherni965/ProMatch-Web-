@@ -20,6 +20,7 @@ CREATE TABLE Etudiant (
 );
 
 -- Table Stage
+<<<<<<< Updated upstream
 CREATE TABLE Stage (
     id_stage DECIMAL(10, 0) PRIMARY KEY,    
     coordinateur VARCHAR(50) NOT NULL,
@@ -32,6 +33,20 @@ CREATE TABLE Stage (
     courriel VARCHAR(100) NOT NULL CHECK (courriel LIKE '%@%.%'), 
     id_employeur DECIMAL(10, 0) REFERENCES Employeur(id_employeur),
     url_image VARCHAR(200) NULL
+=======
+create table stage (
+   
+   id_stage     decimal(10,0) primary key,
+   coordinateur varchar(50) not null,
+   nom_poste    varchar(50) not null,
+   duree        decimal(10,0) not null check ( duree > 0 ),
+   description  varchar(500) not null,
+   taux_horaire decimal(10,2) not null check ( taux_horaire > 0 ),
+   adresse      varchar(100) not null unique,
+   courriel     varchar(100) not null check ( courriel like '%@%.%' ),
+   id_employeur decimal(10,0)
+      references employeur ( id_employeur )
+>>>>>>> Stashed changes
 );
 
 -- Table CV

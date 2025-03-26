@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "name": "tch099_web",
+=======
+  "name": "tch099_website",
+>>>>>>> Stashed changes
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,12 +13,29 @@
     "type": "git",
     "url": "git+https://github.com/elea-c/TCH099_Web.git"
   },
+<<<<<<< Updated upstream
   "keywords": [],
+=======
+>>>>>>> Stashed changes
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/elea-c/TCH099_Web/issues"
   },
   "homepage": "https://github.com/elea-c/TCH099_Web#readme",
+<<<<<<< HEAD
+<<<<<<< Updated upstream
   "description": ""
+=======
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+>>>>>>> Stashed changes
+=======
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+>>>>>>> 87ce3db38451ee2ad3a822f3c5ab710da841119b
 }

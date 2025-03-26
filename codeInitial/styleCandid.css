@@ -1,10 +1,12 @@
-main{
+/*main{
   display: flex;
   justify-content: center;
   align-items: top;
 }
  
 .main-container{
+  position: relative;
+  left: 150px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -16,12 +18,13 @@ main{
 .candidature{
   display: flex;
   justify-content: space-evenly;
-  margin: 8px;
+  margin: 100px;
   flex-direction: column;
   align-items: center;
-  width: 500%;
+  width: 200px;
+  height: 200px;
   border: 2px solid #ccc;
-  border-radius: 4500px;
+  border-radius: 4500%;
   height: 20vh;
   cursor: pointer;
   overflow: hidden;
@@ -31,27 +34,10 @@ main{
 h3{
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 1.5rem;
   margin-bottom: 10px;
   text-align: right;
-}
-
-.candidature.acceptee:hover{
-  display: flex;
-  justify-content: center;
-  background: radial-gradient(circle, rgb(249, 250, 249) 0%, rgb(157, 175, 158) 100%);
-}
-
-.candidature.refusee:hover{
-  display: flex;
-  justify-content: center;
-  background: radial-gradient(circle, rgb(249, 250, 249) 0%, rgb(175, 157, 157) 100%);
-}
-
-.candidature.enAttente:hover{
-  display: flex;
-  justify-content: center;
-  background: radial-gradient(circle, rgb(249, 250, 249) 0%, rgb(191, 197, 158) 100%);
 }
 
 .candidature:hover{
