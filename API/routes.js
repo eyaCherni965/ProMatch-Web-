@@ -6,7 +6,7 @@ module.exports = (db) => {
     const router = express.Router();
 
 //API connexion:
-router.post('/login', (req, res) => {
+router.get('/login', (req, res) => {
     const { email, password } = req.body;
     const usager = testUser.find(u => u.adresseCourriel === email && u.motDePasse === password);
     if(usager){
