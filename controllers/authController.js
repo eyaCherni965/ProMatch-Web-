@@ -2,15 +2,12 @@ const { poolPromise, sql } = require('../sql/db');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-
-// Route d'inscription
+// Route d'inscription pour un employeur
 exports.inscription = async (req, res) => {
-  console.log("Données reçues :", req.body);
+  const { nom, prenom, email, mdp, password2, compagnie } = req.body;
 
-  const { nom, prenom, id_employeur, compagnie, email, mdp, password2 } = req.body;
-
-  if (!mdp || !password2) {
-    return res.status(400).send("Mot de passe manquant.");
+  if (!nom || !prenom || !email || !mdp || !password2 || !compagnie) {
+    return res.status(400).send("Tous les champs sont requis.");
   }
 
   if (mdp !== password2) {
@@ -18,53 +15,68 @@ exports.inscription = async (req, res) => {
   }
 
   try {
-    const hashedPassword = await bcrypt.hash(mdp, saltRounds);
     const pool = await poolPromise;
 
+    // Vérifier si l’email existe déjà
+    const existing = await pool.request()
+      .input('email', sql.VarChar(100), email)
+      .query('SELECT * FROM Employeur WHERE email = @email');
+
+    if (existing.recordset.length > 0) {
+      return res.status(409).send("Cet email est déjà utilisé.");
+    }
+
+    const hashedPassword = await bcrypt.hash(mdp, saltRounds);
+
+    // Insérer dans Employeur (et id_employeur s’auto-incrémente si tu l’as mis en IDENTITY)
     await pool.request()
-      .input('nom', sql.VarChar, nom)
-      .input('prenom', sql.VarChar, prenom)
-      .input('id_employeur', sql.VarChar, id_employeur)
-      .input('compagnie', sql.VarChar, compagnie)
-      .input('email', sql.VarChar, email)
-      .input('mdp', sql.VarChar, hashedPassword)
+      .input('nom', sql.VarChar(50), nom)
+      .input('prenom', sql.VarChar(50), prenom)
+      .input('email', sql.VarChar(100), email)
+      .input('mdp', sql.VarChar(255), hashedPassword)
+      .input('compagnie', sql.VarChar(100), compagnie)
       .query(`
-        INSERT INTO employeurs (nom, prenom, id_employeur, compagnie, email, mdp)
-        VALUES (@nom, @prenom, @id_employeur, @compagnie, @email, @mdp)
+        INSERT INTO Employeur (nom, prenom, email, mdp, compagnie)
+        VALUES (@nom, @prenom, @email, @mdp, @compagnie)
       `);
 
     res.send("Inscription réussie !");
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Erreur lors de l'inscription.");
+    console.error("Erreur lors de l'inscription :", err);
+    res.status(500).send("Erreur serveur lors de l'inscription.");
   }
 };
-
 
 // Route de connexion
 exports.connexion = async (req, res) => {
   const { email, mdp } = req.body;
 
+  if (!email || !mdp) {
+    return res.status(400).send("Veuillez entrer un email et un mot de passe.");
+  }
+
   try {
     const pool = await poolPromise;
+
+    // 🔍 Recherche dans la table Employeur (et non Connexion)
     const result = await pool.request()
-      .input('email', sql.VarChar, email)
-      .query('SELECT * FROM employeurs WHERE email = @email');
+      .input('email', sql.VarChar(100), email)
+      .query('SELECT * FROM Employeur WHERE email = @email');
 
     if (result.recordset.length === 0) {
-      return res.status(401).send("Utilisateur introuvable");
+      return res.status(401).send("Email introuvable.");
     }
 
     const user = result.recordset[0];
-    const isPasswordValid = await bcrypt.compare(mdp, user.mdp);
+    const passwordMatch = await bcrypt.compare(mdp, user.mdp);
 
-    if (!isPasswordValid) {
-      return res.status(401).send("Mot de passe incorrect");
+    if (!passwordMatch) {
+      return res.status(401).send("Mot de passe incorrect.");
     }
 
-    res.send("Connexion réussie !");
+    res.status(200).send("Connexion réussie !");
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Erreur lors de la connexion.");
+    console.error("Erreur lors de la connexion :", err);
+    res.status(500).send("Erreur serveur lors de la connexion.");
   }
 };
