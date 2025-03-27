@@ -128,7 +128,15 @@ button:hover {
 }
 
  /******************************************PAGE D'ACCEUIL************************************************/
-/* Liste de navigation dans la sidebar */
+ .welcome-message {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px;
+  color: #2b2b2b;
+}
+
+
+ /* Liste de navigation dans la sidebar */
 .sidebar ul {
   list-style-type: none;
   margin-top: 5px;
