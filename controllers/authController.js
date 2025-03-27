@@ -74,7 +74,8 @@ exports.connexion = async (req, res) => {
       return res.status(401).send("Mot de passe incorrect.");
     }
 
-    res.status(200).send("Connexion réussie !");
+    res.redirect('/acceuil_TCH099.html');
+
   } catch (err) {
     console.error("Erreur lors de la connexion :", err);
     res.status(500).send("Erreur serveur lors de la connexion.");

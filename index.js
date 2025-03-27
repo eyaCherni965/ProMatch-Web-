@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // 👉 Dossier des fichiers statiques (HTML, CSS...)
-app.use(express.static(path.join(__dirname, 'code initial')));
+app.use(express.static(path.join(__dirname, 'codeInitial')));
 
 // 👉 Routes personnalisées
 app.use('/', inscRoutes);
