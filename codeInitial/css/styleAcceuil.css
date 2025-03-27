@@ -257,5 +257,11 @@ hr {
   background-color: #260000;
 }
 
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0px;
+}
+
 
 
