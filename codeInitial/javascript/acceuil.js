@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("accueil.js bien chargé !");
 
   const compagnie = localStorage.getItem("compagnie");
+  const prenom = localStorage.getItem("prenom");
   const bienvenueEl = document.getElementById("bienvenue");
   const deconnexionBtn = document.getElementById("logoutBtn");
 
@@ -12,9 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Afficher le message de bienvenue
-  if (bienvenueEl) {
-    bienvenueEl.textContent = 'Bienvenue, ${compagnie} ';
+  if (bienvenueEl && prenom) {
+    bienvenueEl.textContent = `Bienvenue, ${prenom} `;
   }
+  
 
   // Gestion du bouton de déconnexion
   if (deconnexionBtn) {

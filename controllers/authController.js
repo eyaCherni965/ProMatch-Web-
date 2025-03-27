@@ -74,7 +74,8 @@ exports.connexion = async (req, res) => {
     return res.status(200).json({
       message: "Connexion réussie !",
       id_employeur: user.id_employeur,
-      compagnie: user.compagnie
+      compagnie: user.compagnie,
+      prenom: user.prenom 
     });
 
   } catch (err) {
