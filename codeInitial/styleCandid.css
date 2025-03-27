@@ -1,47 +1,77 @@
-/*main{
+main {
   display: flex;
   justify-content: center;
-  align-items: top;
-}
- 
-.main-container{
-  position: relative;
-  left: 150px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  width: 100vh; 
-
+  padding: 2rem;
+  background-color: #f7f7f7;
 }
 
-.candidature{
+#liste-container {
   display: flex;
-  justify-content: space-evenly;
-  margin: 100px;
   flex-direction: column;
-  align-items: center;
-  width: 200px;
-  height: 200px;
-  border: 2px solid #ccc;
-  border-radius: 4500%;
-  height: 20vh;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Carte pour chaque candidature */
+.candidature-card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.candidature-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.candidature-card strong {
+  font-size: 1.2rem;
+}
+
+.statut {
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  overflow: hidden;
+  background-color: #0077cc;
+  color: white;
+  transition: background 0.2s ease;
 }
 
-
-h3{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  text-align: right;
+button:hover {
+  background-color: #005999;
 }
 
-.candidature:hover{
-transition: 0.5 ease-in-out;
-background: #4b0000;
-color: grey;
-}*/
+/* Couleurs pour le statut */
+.statut {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.statut.acceptée {
+  color: white;
+  background-color: #4CAF50; /* Vert */
+}
+
+.statut.refusée {
+  color: white;
+  background-color: #f44336; /* Rouge */
+}
+
+.statut.attente,
+.statut["en attente"] {
+  color: black;
+  background-color: #ffeb3b; /* Jaune */
+}
+

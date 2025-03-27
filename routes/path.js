@@ -10,6 +10,7 @@ router.post('/inscription', authController.inscription);
 router.post('/connexion', authController.connexion);
 
 // Route de candidatures
-router.get('/employeur/:id/candidats', candidaturesController.getCandidats);
+router.get('/candidatures/:id_employeur', candidaturesController.getCandidats);
+router.post('/candidature/statut', candidaturesController.updateStatut);
 
 module.exports = router;

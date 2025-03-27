@@ -36,3 +36,26 @@ exports.getCandidats = async (req, res) => {
     res.status(500).send("Erreur lors de la récupération des candidats");
   }
 };
+
+exports.updateStatut = async (req, res) => {
+  const { id_candidature, statut } = req.body;
+
+  try {
+    const pool = await poolPromise;
+
+    await pool.request()
+      .input('id_candidature', sql.Int, id_candidature)
+      .input('statut', sql.VarChar(50), statut)
+      .query(`
+        UPDATE Candidature
+        SET statut = @statut
+        WHERE id_candidature = @id_candidature
+      `);
+
+    res.status(200).send("Statut mis à jour !");
+  } catch (err) {
+    console.error("Erreur update statut :", err);
+    res.status(500).send("Erreur lors de la mise à jour du statut");
+  }
+};
+

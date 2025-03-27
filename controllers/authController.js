@@ -5,7 +5,7 @@ const saltRounds = 10;
 exports.inscription = async (req, res) => {
   const { nom, prenom, email, mdp, password2, compagnie } = req.body;
 
-  // 🛡 Validation
+  // Validation
   if (!nom || !prenom || !email || !mdp || !password2 || !compagnie) {
     return res.status(400).send("Tous les champs sont requis.");
   }
@@ -17,7 +17,7 @@ exports.inscription = async (req, res) => {
   try {
     const pool = await poolPromise;
 
-    // 🔎 Vérifie si l’email existe déjà
+    // Vérifie si l’email existe déjà
     const existing = await pool.request()
       .input('email', sql.VarChar(100), email)
       .query('SELECT * FROM Employeur WHERE email = @email');
