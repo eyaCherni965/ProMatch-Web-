@@ -19,6 +19,8 @@ exports.stage = async (req, res) => {
     return res.status(400).send("Tous les champs sont requis.");
   }
 
+  console.log("Données envoyées :", req.body);
+  
   try {
     const pool = await poolPromise;
 

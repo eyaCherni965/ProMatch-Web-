@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log("Candidats reçus :", candidats);
       const container = document.getElementById('liste-container');
       if (!container) {
-        console.error("❌ Aucun élément avec l'id 'liste-container' trouvé !");
+        console.error("Aucun élément avec l'id 'liste-container' trouvé !");
         return;
       } else {
-        console.log("✅ Élément #liste-container trouvé !");
-        container.innerHTML += "<p>✅ Le JS est bien exécuté !</p>";
+        console.log(" Élément #liste-container trouvé !");
+        container.innerHTML += "<p>Le JS est bien exécuté !</p>";
       }
       
       container.innerHTML = '';
