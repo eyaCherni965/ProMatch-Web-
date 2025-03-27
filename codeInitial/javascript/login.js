@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("id_employeur", data.id_employeur);
             localStorage.setItem("compagnie", data.compagnie);
             localStorage.setItem("prenom", data.prenom);
+            localStorage.setItem("email", data.email)
             window.location.href = "acceuil_TCH099.html";
           } else {
             alert(data.message);

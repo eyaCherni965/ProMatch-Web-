@@ -29,7 +29,7 @@
     <main>
         <br>
         <h2>Déposez vos offres de stage ici !</h2><br>
-        <form action="/jspEncore" method="post">
+        <form action="http://localhost:8080/stages" method="post">
           <div class="columns">
             <div class="column-left">
               <ul>
@@ -51,7 +51,7 @@
                 </li>
                 <li class="group">
                   <label for="duree">Durée du stage (en mois)&nbsp;:</label>
-                  <input type="text" id="duree" name="duree_stage" required/>
+                  <input type="text" id="duree" name="duree" required/>
                 </li>
               </ul>
             </div>
@@ -59,7 +59,7 @@
               <ul>
                 <li class="group">
                   <label for="description">Description du poste&nbsp;:</label>
-                  <textarea type="text" id="description" name="description_poste" required></textarea>
+                  <textarea id="description" name="desc_poste" required></textarea>
                 </li>
                 <li class="group">
                   <label for="adresse">Adresse&nbsp;:</label>
@@ -67,11 +67,11 @@
                 </li>
                 <li class="group">
                   <label for="image"> Dépot d'image (url)&nbsp;:</label>
-                  <input type="text" id="image" name="image_offre" required> 
+                  <input type="text" id="image" name="url_image">
                 </li>
                 <li class="group">
                   <label for="taux_horaire">Taux horaire ($)&nbsp;:</label>
-                  <input type="number" min="17.75" max="10000.00" step="0.01" id="taux_horaire" name="salaire"/>
+                  <input type="number" min="17.75" max="10000.00" step="0.01" id="taux_horaire" name="taux_horaire"/>
                 </li>
               </ul>
             </div>  
@@ -80,6 +80,10 @@
             <button type="submit">Soumettre l'offre</button>
             <button type="reset">Effacer</button>
           </div>
+          <input type="hidden" name="id_employeur" id="id_employeur">
+          <input type="hidden" name="courriel" id="courriel">
         </form>
     </main>
-</body>
+    <script src="javascript/stages.js"></script>
+  </body>
+</html>
