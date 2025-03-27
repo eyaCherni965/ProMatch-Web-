@@ -1,41 +1,18 @@
 {
-<<<<<<< Updated upstream
-  "name": "tch099_web",
-=======
-  "name": "tch099_website",
->>>>>>> Stashed changes
+  "name": "api",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/elea-c/TCH099_Web.git"
-  },
-<<<<<<< Updated upstream
   "keywords": [],
-=======
->>>>>>> Stashed changes
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/elea-c/TCH099_Web/issues"
-  },
-  "homepage": "https://github.com/elea-c/TCH099_Web#readme",
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-  "description": ""
-=======
   "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "mssql": "^11.0.1"
   }
->>>>>>> Stashed changes
-=======
-  "description": "",
-  "dependencies": {
-    "dotenv": "^16.4.7"
-  }
->>>>>>> 87ce3db38451ee2ad3a822f3c5ab710da841119b
 }
