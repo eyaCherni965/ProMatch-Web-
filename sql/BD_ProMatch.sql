@@ -71,3 +71,5 @@ CREATE TABLE Stage_Etudiant (
     id_etudiant DECIMAL(10, 0) REFERENCES Etudiant(id_etudiant), 
     PRIMARY KEY (id_stage, id_etudiant) -- Clé primaire composée
 ); 
+
+SELECT * FROM Etudiant;

@@ -81,3 +81,4 @@ exports.connexion = async (req, res) => {
     res.status(500).send("Erreur serveur lors de la connexion.");
   }
 };
+
