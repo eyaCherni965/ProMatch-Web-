@@ -1,24 +1,24 @@
-/* Reset */
+/* Reset 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Containers de la page */
+ Containers de la page 
 body {
-column-count: 2;  /* Crée deux colonnes */
+column-count: 2;  /* Crée deux colonnes 
 column-gap: 0px;
 text-align: center;
 font-family: "Garamond", serif;
 color: white;
 }
 
-/* Colonnes */
+ Colonnes 
 .column-etudiant, .column-employeur {
-  height: 100vh;  /* Les colonnes prennent toute la hauteur de l'écran */
-  background-size: cover;  /* Les images prennent toute la surface de la colonne */
-  background-position: center;  /* Les images sont centrées */
+  height: 100vh; 
+  background-size: cover;  
+  background-position: center;  
   text-align: center;
   filter: brightness(50%);
   transition: transform 1s ease-in-out, opacity 0.3s;
@@ -65,7 +65,7 @@ h1, h2 {
   text-shadow: 2px 2px black;
 }
 
-/* ProMatch */
+ ProMatch 
 .logo {
   color: white;
   font-size: 3rem ;
@@ -75,4 +75,86 @@ h1, h2 {
   transform : translate(-50%, -50%);
   z-index : 1 ;
   filter: none;
+}*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;500&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.nav-container{
+  display: flex;
+  justify-content: space-between; /* logo à gauche, menu à droite */
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #222;
+  color: white;
+  font-family: bebas neue, sans-serif;
+}
+
+.bar-nav{
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  cursor: pointer;
+}
+
+.container-img{
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../img/business-3152586_1280.jpg);
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.6); 
+  background-blend-mode: darken;
+
+  display: flex;
+  justify-content: center;
+  color: white;
+  z-index: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1{
+  font-family:  neue, sans-serif
+}
+
+.container-text{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.sous-titre{
+  color: white;
+  font-size: 1.8rem;
+  font-family: bebas neue, sans-serif;
+}
+
+.container-btn{ 
+  display: flex;
+  gap: 50px; 
+  margin-top: 40px;
+  justify-content: center; 
+}
+
+button{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 50vh;
+  height: 10vh;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffffcc;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover{
+  transform: scale(1.1); 
 }
