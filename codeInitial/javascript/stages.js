@@ -7,8 +7,6 @@ window.onload = () => {
       document.getElementById("courriel").value = courriel;
     } else {
       alert("Informations de connexion manquantes. Veuillez vous reconnecter.");
-      // Tu peux aussi rediriger :
-      // window.location.href = "login.html";
     }
   };
 

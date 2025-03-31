@@ -39,6 +39,13 @@ exports.updateStatut = async (req, res) => {
         UPDATE Candidature
         SET statut = @statut
         WHERE id_candidature = @id_candidature
+        UPDATE Candidature
+        SET nom = @nom
+        WHERE nom = @nom
+        SET prenom = @prenom
+        WHERE prenom = @prenom
+        SET CV = @CV
+        WHERE CV = @CV
       `);
 
     res.status(200).send("Statut mis à jour !");
