@@ -84,6 +84,33 @@ exports.connexion = async (req, res) => {
   }
 };
 
+// Déconnexion
+
+exports.deconnexion = (req, res) => {
+  if (!req.session) {
+    return res.status(200).json({
+      message: "Aucune session active.",
+      id_employeur: null,
+      compagnie: null,
+      prenom: null
+    });
+  }
+
+  req.session.destroy(err => {
+    if (err) {
+      console.error("Erreur lors de la destruction de la session :", err);
+      return res.status(500).json({ message: "Erreur lors de la déconnexion." });
+    }
+
+    return res.status(200).json({
+      message: "Déconnexion réussie !",
+      id_employeur: null,
+      compagnie: null,
+      prenom: null
+    });
+  });
+};
+
 //Android Studio -> connexion
 exports.connexionEtudiant = async (req, res) => {
   const { email, mdp } = req.body;
