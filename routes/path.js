@@ -10,6 +10,9 @@ router.post('/inscription', authController.inscription);
 // Route de connexion
 router.post('/connexion', authController.connexion);
 
+// Route de deconnexion
+router.post('/deconnexion', authController.deconnexion);
+
 // Route de candidatures
 router.get('/candidatures/:id_employeur', candidaturesController.getCandidats);
 router.post('/candidature/statut', candidaturesController.updateStatut);
