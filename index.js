@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 const PORT = 8080;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Serveur écoute sur http://localhost:${PORT}`);
 });
 

@@ -17,4 +17,11 @@ router.post('/candidature/statut', candidaturesController.updateStatut);
 // Route de stages
 router.post('/stages', stagesController.stage);
 
+//Route pour Connexion Etudiant (Android studio)
+router.post('/connexionEtudiant', authController.connexionEtudiant);
+
+//Route pour Inscription Etudiant
+router.post("/inscriptionEtudiant", authController.inscriptionEtudiant);
+
+
 module.exports = router;
