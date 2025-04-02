@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector('.login-container');
   const btnInscrire = document.querySelector('.btn-inscrire');
   const btnConnecter = document.querySelector('.btn-connecter');
+  const params = new URLSearchParams(window.location.search);
+if (params.get("inscription") === "1") {
+  document.querySelector('.login-container').classList.add('active');}
 
   // Animation pour changer entre les vues
   btnInscrire.addEventListener('click', () => container.classList.add('active'));
