@@ -2,8 +2,8 @@ const sql = require('mssql');
 
 const config = {
   user: 'azureuser',
-  password: 'Promatch123.',
-  server: 'mysqlserver0411.database.windows.net',
+  password: 'TCH099Promatch',
+  server: 'promatch.database.windows.net',
   database: 'mySampleDatabase',
   options: {
     encrypt: true,

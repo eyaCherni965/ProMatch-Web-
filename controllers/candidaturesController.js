@@ -1,6 +1,5 @@
 const { poolPromise, sql } = require('../sql/db');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+
 
 //Affichage de la liste des étudiants / Usager:
 

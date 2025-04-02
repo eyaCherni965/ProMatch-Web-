@@ -4,16 +4,3 @@
 
 
 
-
-
-
-
-
-CREATE TABLE Stage_Etudiant (
-  id_etudiant INT NOT NULL,
-  id_stage INT NOT NULL,
-  statut VARCHAR(50) (statut IN ('En attente', 'Acceptée', 'Refusée')),
-  PRIMARY KEY (id_etudiant, id_stage),
-  FOREIGN KEY (id_stage) REFERENCES Stage(id_stage),
-  FOREIGN KEY (id_cv) INT REFERENCES CV(id_cv)
-);
