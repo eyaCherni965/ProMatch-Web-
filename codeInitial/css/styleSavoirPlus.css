@@ -4,6 +4,10 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  body{
+    background: linear-gradient(90deg, #f7f7f7 0%, rgb(222, 220, 220) 100%);
+  }
   
   .text-container {
     opacity: 0;
@@ -30,7 +34,7 @@
     font-family: 'Bebas Neue', sans-serif;
   }
   .promatch-section {
-    background: linear-gradient(135deg, #e0f7fa, #d5cccf);
+    background: linear-gradient(135deg, #f6f6f6, #c0bdbd);
     padding: 60px 20px;
     border-radius: 30px;
     margin: 40px auto;

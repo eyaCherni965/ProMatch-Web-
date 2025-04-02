@@ -1,120 +1,18 @@
-/* Reset 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
- Containers de la page 
-body {
-column-count: 2;  /* Crée deux colonnes 
-column-gap: 0px;
-text-align: center;
-font-family: "Garamond", serif;
-color: white;
-}
-
- Colonnes 
-.column-etudiant, .column-employeur {
-  height: 100vh; 
-  background-size: cover;  
-  background-position: center;  
-  text-align: center;
-  filter: brightness(50%);
-  transition: transform 1s ease-in-out, opacity 0.3s;
-}
-
-.column-etudiant {
-  background-image: url("./codeInitial/img/Image 1 - MEM vs MBA_0_0.jpg");
-  background-color: #4b0000;
-}
-
-.column-employeur {
-  background-image: url("./codeInitial/img/business-3152586_1280.jpg");
-  background-color: #D1C7BD;
-}
-
-.text-employeur {
-  color: white;
-  font-size: 24px ;
-  position : absolute;
-  top : 50%;
-  left: 75%;
-  transform : translate(-50%, -50%);
-  z-index : 1 ;
-  filter: none;
-}
-
-.text-etudiant {
-  color: white;
-  font-size: 24px ;
-  position : absolute;
-  top : 50%;
-  left: 25%;
-  transform : translate(-50%, -50%);
-  z-index : 1 ;
-  filter: none;
-}
-
-.column-etudiant:hover, .column-employeur:hover {
-  filter: none;
-  transition: 1s;
-}
-
-h1, h2 {
-  text-shadow: 2px 2px black;
-}
-
- ProMatch 
-.logo {
-  color: white;
-  font-size: 3rem ;
-  position : absolute;
-  top : 20%;
-  left: 50%;
-  transform : translate(-50%, -50%);
-  z-index : 1 ;
-  filter: none;
-}*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;500&display=swap');
 *{
   margin: 0px;
   padding: 0px;
 }
 
-.nav-container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: #4b0000;
-  color: white;
-  font-family: bebas neue, sans-serif;
-}
-
-li{
-  transition: 1 ease-in-out;
-}
-
-li:hover{
-  transform:scale(1.2);
-}
-
-.bar-nav{
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  cursor: pointer;
-}
-
 .container-img{
   width: 100%;
   min-height: 100vh;
-  background-image: url(../img/depositphotos_110384782-stock-photo-businesswoman-presenting-her-business-ideas.jpg);
+  background-image: url(../img/business-contract.pnj.jpeg);
   background-position: center;
   background-size: cover;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.65); 
+  background-color: rgba(0, 0, 0, 0.7); 
   background-blend-mode: darken;
 
   display: flex;
@@ -125,9 +23,32 @@ li:hover{
   align-items: center;
 }
 
-h1{
-  font-family:  neue, sans-serif;
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #4b0000;
+  padding: 10px 20px;
+  box-sizing: border-box;
 }
+
+.logo-nav {
+  height: 80px;
+  margin: 0;       
+  padding: 0;      
+}
+
+.bar-nav {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  cursor: pointer;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+
 
 .container-text{
   margin-top: 20px;
@@ -136,8 +57,10 @@ h1{
 
 .sous-titre{
   color: white;
+  display:flex;
+  justify-content: center;
   font-size: 1.8rem;
-  font-family: bebas neue, sans-serif;
+  font-family: bebas neue;
 }
 
 .container-btn{ 
@@ -165,4 +88,39 @@ button{
 
 button:hover{
   transform: scale(1.1); 
+}
+
+.connect{
+  color: white;
+  display:flex;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-top: 50px;
+
+}
+
+.connect-border{
+  border: 1px dotted white;
+  margin-top:10px;
+  padding: 20px 20px;
+  border-radius: 8px;
+  pointer: cursor;
+  transition: transform 0.2s ease-in-out;
+}
+
+
+
+.connect-border:hover{
+  transform: scale(1.1);
+}
+
+
+
+h3{
+  color: white;
+  display:flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-family: bebas neue;
 }
