@@ -84,12 +84,20 @@ h1, h2 {
 
 .nav-container{
   display: flex;
-  justify-content: space-between; /* logo à gauche, menu à droite */
+  justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #222;
+  background-color: #4b0000;
   color: white;
   font-family: bebas neue, sans-serif;
+}
+
+li{
+  transition: 1 ease-in-out;
+}
+
+li:hover{
+  transform:scale(1.2);
 }
 
 .bar-nav{
@@ -102,11 +110,11 @@ h1, h2 {
 .container-img{
   width: 100%;
   min-height: 100vh;
-  background-image: url(../img/business-3152586_1280.jpg);
+  background-image: url(../img/depositphotos_110384782-stock-photo-businesswoman-presenting-her-business-ideas.jpg);
   background-position: center;
   background-size: cover;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.6); 
+  background-color: rgba(0, 0, 0, 0.65); 
   background-blend-mode: darken;
 
   display: flex;
@@ -118,12 +126,12 @@ h1, h2 {
 }
 
 h1{
-  font-family:  neue, sans-serif
+  font-family:  neue, sans-serif;
 }
 
 .container-text{
   margin-top: 20px;
-  text-align: center;
+  text-align: center; 
 }
 
 .sous-titre{
