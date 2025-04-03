@@ -118,11 +118,11 @@ exports.deconnexion = (req, res) => {
   });
 };
 
-//Android Studio -> connexion
+/// Android Studio -> connexion étudiant
 exports.connexionEtudiant = async (req, res) => {
   const { email, mdp } = req.body;
 
-  console.log("Requête de connexion reçue :", req.body); // Affiche l'objet reçu
+  console.log("Connexion requise avec :", req.body);
 
   if (!email || !mdp) {
     return res
@@ -135,38 +135,31 @@ exports.connexionEtudiant = async (req, res) => {
     const result = await pool
       .request()
       .input("email", sql.VarChar(100), email)
-      .query("SELECT * FROM Etudiant WHERE courriel = @email");
+      .query("SELECT * FROM Etudiant WHERE email = @email");
 
     if (result.recordset.length === 0) {
-      console.log("⚠️ Échec de connexion : email introuvable");
+      console.log("Aucun compte trouvé pour :", email);
       return res.status(401).json({ message: "Email introuvable." });
     }
 
     const compte = result.recordset[0];
 
-    // Tests de log
-    console.log("mdp reçu :", mdp);
-    console.log("mdp stocké (hashé) :", compte.mot_de_passe);
-    console.log("Toutes les clés de compte:", Object.keys(compte));
-    console.log(
-      "Résultat comparaison bcrypt :",
-      await bcrypt.compare(mdp, compte.mot_de_passe)
-    );
-
-    const match = await bcrypt.compare(mdp, compte.mot_de_passe);
-
+    const match = await bcrypt.compare(mdp, compte.mdp);
     if (!match) {
-      console.log("Échec de connexion : mot de passe incorrect");
+      console.log("Mot de passe incorrect");
       return res.status(401).json({ message: "Mot de passe incorrect." });
     }
 
-    console.log("Connexion réussie pour :", compte.courriel);
+    console.log("Connexion réussie pour :", compte.email);
     return res.status(200).json({
       id_etudiant: compte.id_etudiant,
-      email: compte.courriel,
+      nom: compte.nom,
+      prenom: compte.prenom,
+      email: compte.email,
+      url_cv: compte.url_cv,
     });
   } catch (err) {
-    console.error("Erreur connexion étudiant :", err);
+    console.error("Erreur serveur :", err.message);
     return res.status(500).json({ message: "Erreur serveur." });
   }
 };
