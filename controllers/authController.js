@@ -75,6 +75,12 @@ exports.connexion = async (req, res) => {
       return res.status(401).json({ message: "Mot de passe incorrect." });
     }
 
+    req.session.user = {
+      id_employeur: user.id_employeur,
+      compagnie: user.compagnie,
+      prenom: user.prenom,
+    };
+
     return res.status(200).json({
       message: "Connexion réussie !",
       id_employeur: user.id_employeur,
@@ -109,6 +115,8 @@ exports.deconnexion = (req, res) => {
         .json({ message: "Erreur lors de la déconnexion." });
     }
 
+    res.clearCookie("connect.sid");
+
     return res.status(200).json({
       message: "Déconnexion réussie !",
       id_employeur: null,
@@ -135,16 +143,26 @@ exports.connexionEtudiant = async (req, res) => {
     const result = await pool
       .request()
       .input("email", sql.VarChar(100), email)
-      .query("SELECT * FROM Etudiant WHERE email = @email");
+      .query("SELECT * FROM Etudiant WHERE courriel = @email");
 
     if (result.recordset.length === 0) {
-      console.log("Aucun compte trouvé pour :", email);
+      console.log("Échec de connexion : email introuvable");
       return res.status(401).json({ message: "Email introuvable." });
     }
 
     const compte = result.recordset[0];
 
-    const match = await bcrypt.compare(mdp, compte.mdp);
+    // Tests de log
+    console.log("mdp reçu :", mdp);
+    console.log("mdp stocké (hashé) :", compte.mot_de_passe);
+    console.log("Toutes les clés de compte:", Object.keys(compte));
+    console.log(
+      "Résultat comparaison bcrypt :",
+      await bcrypt.compare(mdp, compte.mot_de_passe)
+    );
+
+    const match = await bcrypt.compare(mdp, compte.mot_de_passe);
+
     if (!match) {
       console.log("Mot de passe incorrect");
       return res.status(401).json({ message: "Mot de passe incorrect." });
@@ -153,10 +171,7 @@ exports.connexionEtudiant = async (req, res) => {
     console.log("Connexion réussie pour :", compte.email);
     return res.status(200).json({
       id_etudiant: compte.id_etudiant,
-      nom: compte.nom,
-      prenom: compte.prenom,
-      email: compte.email,
-      url_cv: compte.url_cv,
+      email: compte.courriel,
     });
   } catch (err) {
     console.error("Erreur serveur :", err.message);
@@ -164,44 +179,50 @@ exports.connexionEtudiant = async (req, res) => {
   }
 };
 
-// Android Studio -> inscription étudiant
+//Android Studio -> isncription étudiant;
 exports.inscriptionEtudiant = async (req, res) => {
-  const { nom, prenom, email, mdp, url_cv } = req.body;
+  const { nom, prenom, email, mdp, password2 } = req.body;
 
   // 1. Validation des champs
-  if (!nom || !prenom || !email || !mdp || !url_cv) {
+  if (!nom || !prenom || !email || !mdp || !password2) {
     return res.status(400).json({ message: "Tous les champs sont requis." });
+  }
+
+  if (mdp !== password2) {
+    return res
+      .status(400)
+      .json({ message: "Les mots de passe ne correspondent pas." });
   }
 
   try {
     const pool = await poolPromise;
 
-    // 2. Vérifie si l’email est déjà utilisé
+    // 2. Vérifier si le courriel est déjà utilisé dans Connexion
     const existing = await pool
       .request()
       .input("email", sql.VarChar(100), email)
-      .query("SELECT * FROM Etudiant WHERE email = @email");
+      .query("SELECT * FROM Etudiant WHERE courriel = @email");
 
     if (existing.recordset.length > 0) {
       return res.status(409).json({ message: "Ce courriel est déjà utilisé." });
     }
 
-    // 3. Hash du mot de passe
+    // 3. Hasher le mot de passe
     const hashedPassword = await bcrypt.hash(mdp, saltRounds);
 
-    // 4. Insertion dans la table
+    // 4. Insertion dans la table Etudiant
     await pool
       .request()
       .input("nom", sql.VarChar(50), nom)
       .input("prenom", sql.VarChar(50), prenom)
       .input("email", sql.VarChar(100), email)
-      .input("mdp", sql.VarChar(255), hashedPassword)
+      .input("mdp", sql.VarChar(255), mdp)
       .input("url_cv", sql.VarChar(255), url_cv).query(`
         INSERT INTO Etudiant (nom, prenom, email, mdp, url_cv)
         VALUES (@nom, @prenom, @email, @mdp, @url_cv)
       `);
 
-    // 5. Récupérer l’ID étudiant
+    // 5. Récupérer l’id auto-généré (via le courriel)
     const idResult = await pool
       .request()
       .input("email", sql.VarChar(100), email)
@@ -209,19 +230,11 @@ exports.inscriptionEtudiant = async (req, res) => {
 
     const idEtudiant = idResult.recordset[0].id_etudiant;
 
-    return res.status(200).json({
-      message: "Inscription étudiant réussie !",
-      id_etudiant: idEtudiant,
-    });
+    return res.status(200).json({ message: "Inscription étudiant réussie !" });
   } catch (err) {
-    console.error(
-      "Erreur serveur lors de l'inscription étudiant :",
-      err.message
-    );
-    console.error(err.stack);
-    return res.status(500).json({
-      message: "Erreur serveur lors de l'inscription étudiant.",
-      erreur: err.message,
-    });
+    console.error("Erreur serveur lors de l'inscription étudiant :", err);
+    return res
+      .status(500)
+      .json({ message: "Erreur serveur lors de l'inscription étudiant." });
   }
 };
