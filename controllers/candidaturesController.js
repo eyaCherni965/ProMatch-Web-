@@ -1,30 +1,40 @@
 const { poolPromise, sql } = require('../sql/db');
 
 
-//Affichage de la liste des étudiants / Usager:
+//Affichage de la liste des étudiants
 
 exports.getCandidats = async (req, res) => {
-  const id_employeur = req.params.id;
-
-  const query = `
-  SELECT * FROM Candidature;
-`;
-
+  console.log("Route /candidatures/:id_employeur bien atteinte !");
+  const id_employeur = req.params.id_employeur;
 
   try {
     const pool = await poolPromise;
-    const result = await pool.request()
-      .input('id_employeur', sql.Decimal(10, 0), Number(id_employeur))
-      .query(query);
 
-      console.log(JSON.stringify(result.recordset, null, 2));
-      
+    const result = await pool.request()
+      .input('id_employeur', sql.Int, id_employeur)
+      .query(`
+        SELECT 
+          C.id_candidature,
+          C.statut,
+          E.nom,
+          E.prenom,
+          E.url_cv,
+          S.nom_poste
+        FROM Candidature C
+        JOIN Etudiant E ON C.id_etudiant = E.id_etudiant
+        JOIN Stage S ON C.id_stage = S.id_stage
+        WHERE S.id_employeur = @id_employeur
+      `);
+
     res.json(result.recordset);
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Erreur lors de la récupération des candidats");
+    console.error("Erreur lors de la récupération des candidatures :", err);
+    res.status(500).send("Erreur serveur");
   }
 };
+
+// Update le statut
+
 exports.updateStatut = async (req, res) => {
   const { id_candidature, statut } = req.body;
 
@@ -38,13 +48,6 @@ exports.updateStatut = async (req, res) => {
         UPDATE Candidature
         SET statut = @statut
         WHERE id_candidature = @id_candidature
-        UPDATE Candidature
-        SET nom = @nom
-        WHERE nom = @nom
-        SET prenom = @prenom
-        WHERE prenom = @prenom
-        SET CV = @CV
-        WHERE CV = @CV
       `);
 
     res.status(200).send("Statut mis à jour !");

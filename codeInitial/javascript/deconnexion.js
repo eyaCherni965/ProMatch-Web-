@@ -3,7 +3,8 @@ function logout() {
       method: "POST",
       credentials: "include" 
     }).then(() => {
-      localStorage.empty();
+      alert("Déconnexion réussie")
+      localStorage.clear();
       window.location.href = "index.html";
     }).catch(error => {
       console.error("Erreur de déconnexion :", error);

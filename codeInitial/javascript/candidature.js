@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
-  console.log("🧠 ID récupéré du localStorage :", ID_EMPLOYEUR);
+  console.log("ID récupéré du localStorage :", ID_EMPLOYEUR);
 
   if (!ID_EMPLOYEUR) {
     alert('Vous devez être connecté pour accéder à cette page');
@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch(`/candidatures/${ID_EMPLOYEUR}`)
     .then(res => {
       console.log("Réponse reçue du serveur :", res);
+      if (!res.ok) throw new Error(`Erreur HTTP : ${res.status}`);
       return res.json();
-    })
+    })  
     .then(candidats => {
       console.log("Candidats reçus :", candidats);
       const container = document.getElementById('liste-container');
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         div.innerHTML = `
           <strong>${candidat.nom} ${candidat.prenom}</strong><br>
           Poste: ${candidat.nom_poste}<br>
-          CV: ${candidat.CV || 'Non disponible'}<br>
+          CV: ${candidat.url_cv || 'Non disponible'}<br>
           Statut: <span class="statut" id="statut-${candidat.id_candidature}">${candidat.statut}</span><br>
           <button onclick="ChangerStatut(${candidat.id_candidature}, 'acceptée')">Accepter</button> 
           <button onclick="ChangerStatut(${candidat.id_candidature}, 'refusée')">Refuser</button>
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function ChangerStatut(id_candidature, nvxStatut) {
-  fetch('/candidature/statut', {
+  fetch('/candidatures/statut', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id_candidature, statut: nvxStatut }) 

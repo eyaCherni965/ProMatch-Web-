@@ -10,7 +10,7 @@ app.use(
     secret: "sessionProTCH099",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: { secure: false },
   })
 );
 
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.send("Bienvenue sur le serveur Express !");
 });
 
-const PORT = 3007;
+const PORT = 8080;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Serveur écoute sur http://localhost:${PORT}`);
 });
