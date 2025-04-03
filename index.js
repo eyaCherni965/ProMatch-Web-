@@ -51,15 +51,7 @@ app.get("/", (res) => {
   res.send("Bienvenue sur le serveur Express !");
 });
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-const PORT = 3008;
-=======
 // Lancer le serveur
->>>>>>> Stashed changes
-=======
-// Lancer le serveur
->>>>>>> Stashed changes
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Serveur écoute sur http://localhost:${PORT}`);
 });
