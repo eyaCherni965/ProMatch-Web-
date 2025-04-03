@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream
 const { poolPromise, sql } = require("../sql/db");
 const bcrypt = require("bcrypt");
+=======
+const { poolPromise, sql } = require('../sql/db');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+>>>>>>> Stashed changes
 const saltRounds = 10;
 
 exports.inscription = async (req, res) => {
@@ -98,6 +104,7 @@ exports.connexion = async (req, res) => {
 // Déconnexion
 
 exports.deconnexion = (req, res) => {
+  console.log(" Route POST /deconnexion appelée");
   if (!req.session) {
     return res.status(200).json({
       message: "Aucune session active.",
@@ -160,9 +167,22 @@ exports.connexionEtudiant = async (req, res) => {
       return res.status(401).json({ message: "Mot de passe incorrect." });
     }
 
+<<<<<<< Updated upstream
     console.log("Connexion réussie pour :", compte.email);
 
+=======
+
+    // Gestion de session avec JWT
+    const token = jwt.sign({
+      id_etudiant: compte.id_etudiant,
+      email: compte.courriel
+    }, 'ta_clef_secrete_super_secure', { expiresIn: '2h' });
+
+    console.log("Connexion réussie pour :", compte.courriel);
+>>>>>>> Stashed changes
     return res.status(200).json({
+      message: "Connexion réussie",
+      token,
       id_etudiant: compte.id_etudiant,
       nom: compte.nom,
       prenom: compte.prenom,
@@ -223,3 +243,11 @@ exports.inscriptionEtudiant = async (req, res) => {
       .json({ message: "Erreur serveur lors de l'inscription étudiant." });
   }
 };
+<<<<<<< Updated upstream
+=======
+
+//Android studio -- deconnexion
+exports.deconnexionEtudiant = (res) => {
+  return res.status(200).json({ message: "Déconnexion réussie" });
+};
+>>>>>>> Stashed changes
