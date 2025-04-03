@@ -168,12 +168,26 @@ exports.connexionEtudiant = async (req, res) => {
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     console.log("Connexion réussie pour :", compte.email);
 
 =======
 
     // Gestion de session avec JWT
     const token = jwt.sign({
+=======
+
+    // Gestion de session avec JWT
+    const token = jwt.sign({
+      id_etudiant: compte.id_etudiant,
+      email: compte.courriel
+    }, 'ta_clef_secrete_super_secure', { expiresIn: '2h' });
+
+    console.log("Connexion réussie pour :", compte.courriel);
+    return res.status(200).json({
+      message: "Connexion réussie",
+      token,
+>>>>>>> Stashed changes
       id_etudiant: compte.id_etudiant,
       email: compte.courriel
     }, 'ta_clef_secrete_super_secure', { expiresIn: '2h' });
@@ -249,5 +263,9 @@ exports.inscriptionEtudiant = async (req, res) => {
 //Android studio -- deconnexion
 exports.deconnexionEtudiant = (res) => {
   return res.status(200).json({ message: "Déconnexion réussie" });
+<<<<<<< Updated upstream
+};
+>>>>>>> Stashed changes
+=======
 };
 >>>>>>> Stashed changes

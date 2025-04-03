@@ -52,7 +52,11 @@ app.get("/", (res) => {
 });
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 const PORT = 3008;
+=======
+// Lancer le serveur
+>>>>>>> Stashed changes
 =======
 // Lancer le serveur
 >>>>>>> Stashed changes
