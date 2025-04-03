@@ -175,50 +175,39 @@ exports.connexionEtudiant = async (req, res) => {
   }
 };
 
-//Android Studio -> isncription étudiant;
+// Android Studio -> inscription étudiant
 exports.inscriptionEtudiant = async (req, res) => {
-  const { nom, prenom, email, mdp, password2 } = req.body;
+  const { nom, prenom, email, mdp, url_cv } = req.body;
 
-  // 1. Validation des champs
-  if (!nom || !prenom || !email || !mdp || !password2) {
+  if (!nom || !prenom || !email || !mdp || !url_cv) {
     return res.status(400).json({ message: "Tous les champs sont requis." });
-  }
-
-  if (mdp !== password2) {
-    return res
-      .status(400)
-      .json({ message: "Les mots de passe ne correspondent pas." });
   }
 
   try {
     const pool = await poolPromise;
 
-    // 2. Vérifier si le courriel est déjà utilisé dans Connexion
     const existing = await pool
       .request()
       .input("email", sql.VarChar(100), email)
-      .query("SELECT * FROM Etudiant WHERE courriel = @email");
+      .query("SELECT * FROM Etudiant WHERE email = @email");
 
     if (existing.recordset.length > 0) {
       return res.status(409).json({ message: "Ce courriel est déjà utilisé." });
     }
 
-    // 3. Hasher le mot de passe
     const hashedPassword = await bcrypt.hash(mdp, saltRounds);
 
-    // 4. Insertion dans la table Etudiant
     await pool
       .request()
       .input("nom", sql.VarChar(50), nom)
       .input("prenom", sql.VarChar(50), prenom)
       .input("email", sql.VarChar(100), email)
-      .input("mdp", sql.VarChar(255), mdp)
+      .input("mdp", sql.VarChar(255), hashedPassword)
       .input("url_cv", sql.VarChar(255), url_cv).query(`
         INSERT INTO Etudiant (nom, prenom, email, mdp, url_cv)
         VALUES (@nom, @prenom, @email, @mdp, @url_cv)
       `);
 
-    // 5. Récupérer l’id auto-généré (via le courriel)
     const idResult = await pool
       .request()
       .input("email", sql.VarChar(100), email)
