@@ -1,15 +1,4 @@
 function logout() {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    fetch("http://localhost:8080/deconnexion", {
-      method: "POST",
-      credentials: "include" 
-    }).then(() => {
-      alert("Déconnexion réussie")
-      localStorage.clear();
-=======
-=======
->>>>>>> Stashed changes
   fetch("http://localhost:8080/deconnexion", {
     method: "POST",
     credentials: "include"
@@ -24,10 +13,6 @@ function logout() {
       console.log("Déconnexion réussie :", data.message || "");
       localStorage.clear();
       alert("Déconnexion réussie");
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       window.location.href = "index.html";
     })
     .catch(error => {

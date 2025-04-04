@@ -31,12 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const div = document.createElement('div');
         div.className = "candidature-card";
         div.innerHTML = `
-          <strong>${candidat.nom} ${candidat.prenom}</strong><br>
-          Poste: ${candidat.nom_poste}<br>
-          CV: ${candidat.url_cv || 'Non disponible'}<br>
-          Statut: <span class="statut" id="statut-${candidat.id_candidature}">${candidat.statut}</span><br>
+        <div class="infos">
+          <strong>${candidat.prenom} ${candidat.nom}</strong><br>
+          ${candidat.nom_poste}<br>
+          ${candidat.url_cv || 'Non disponible'}<br>
+          <span class="statut" id="statut-${candidat.id_candidature}">${candidat.statut}</span><br>
+        </div>
+        <div class="button-container">
           <button onclick="ChangerStatut(${candidat.id_candidature}, 'acceptée')">Accepter</button> 
           <button onclick="ChangerStatut(${candidat.id_candidature}, 'refusée')">Refuser</button>
+        </div>
         `;
 
         container.appendChild(div);

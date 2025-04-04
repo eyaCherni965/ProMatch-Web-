@@ -1,3 +1,11 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+
 main {
   display: flex;
   justify-content: center;
@@ -10,7 +18,10 @@ main {
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
-  max-width: 800px;
+}
+
+.titre-container {
+  margin: 50px;
 }
 
 /* Carte pour chaque candidature */
@@ -21,6 +32,9 @@ main {
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
 }
 
 .candidature-card:hover {
@@ -32,10 +46,6 @@ main {
   font-size: 1.2rem;
 }
 
-.statut {
-  font-weight: bold;
-}
-
 button {
   margin-top: 10px;
   margin-right: 10px;
@@ -43,35 +53,128 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #0077cc;
+  background-color: #4b0000;
   color: white;
   transition: background 0.2s ease;
 }
 
 button:hover {
-  background-color: #005999;
+  background-color: #260000;
+}
+
+.button-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+}
+
+.infos {
+  flex: 1;
 }
 
 /* Couleurs pour le statut */
 .statut {
   font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: 4px;
+  border-radius: 15px;
 }
 
 .statut.acceptée {
-  color: white;
-  background-color: #4CAF50; /* Vert */
+  color: rgb(46, 176, 46);
+  background-color: lightgreen;
 }
 
 .statut.refusée {
-  color: white;
-  background-color: #f44336; /* Rouge */
+  color: red;
+  background-color: lightpink;
 }
 
-.statut.attente,
-.statut["en attente"] {
+.statut.attente {
+  color: yellow;
+  background-color: lightgoldenrodyellow;
+}
+
+/*******************************************************NAVBAR******************************************************/
+/* Liste de navigation dans la sidebar */
+.sidebar ul {
+  list-style-type: none;
+  margin-top: 5px;
+  padding: 0;
+}
+
+/* Liens dans la sidebar */
+.sidebar li a {
+  display: block;
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  
+}
+
+/* Effet au survol */
+.sidebar li a:hover {
+  background-color: #D1C7BD;
+  color: #fff;
+}
+
+/* Bouton menu */
+.menu-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background-color: transparent !important;
+  border: 2px solid black; 
+  border-radius: 8px; 
   color: black;
-  background-color: #ffeb3b; /* Jaune */
+  padding: 4px 8px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background-color 1s ease, color 1s ease, border-color 1s ease;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: #4b0000;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  padding-top: 60px;
+  color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Appliqué seulement quand la sidebar est ouverte */
+.sidebar.open {
+  width: 250px;
+  border-style: solid;
+  border-color: #260000;
+  border-width: 3px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none;
+  font-size: 28px;
+  color: black;
+  cursor: pointer;
+}
+
+body.sidebar-open .menu-button {
+  display: none;
 }
 

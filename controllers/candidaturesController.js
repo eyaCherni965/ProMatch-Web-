@@ -4,7 +4,6 @@ const { poolPromise, sql } = require('../sql/db');
 //Affichage de la liste des étudiants
 
 exports.getCandidats = async (req, res) => {
-  console.log("Route /candidatures/:id_employeur bien atteinte !");
   const id_employeur = req.params.id_employeur;
 
   try {
