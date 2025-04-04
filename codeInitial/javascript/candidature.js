@@ -31,16 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const div = document.createElement('div');
         div.className = "candidature-card";
         div.innerHTML = `
-        <div class="infos">
-          <strong>${candidat.prenom} ${candidat.nom}</strong><br>
-          ${candidat.nom_poste}<br>
-          ${candidat.url_cv || 'Non disponible'}<br>
-          <span class="statut" id="statut-${candidat.id_candidature}">${candidat.statut}</span><br>
-        </div>
-        <div class="button-container">
-          <button onclick="ChangerStatut(${candidat.id_candidature}, 'acceptée')">Accepter</button> 
-          <button onclick="ChangerStatut(${candidat.id_candidature}, 'refusée')">Refuser</button>
-        </div>
+          <div class="card-content">
+            <div class="infos">
+              <strong>${candidat.prenom} ${candidat.nom}</strong><br>
+              ${candidat.nom_poste}<br>
+              ${candidat.url_cv || 'Non disponible'}<br>
+              <span class="statut ${candidat.statut.toLowerCase()}" id="statut-${candidat.id_candidature}">
+              ${candidat.statut}
+            </span>
+            </div>
+            <div class="button-container">
+              <button onclick="ChangerStatut(${candidat.id_candidature}, 'acceptée')">Accepter</button> 
+              <button onclick="ChangerStatut(${candidat.id_candidature}, 'refusée')">Refuser</button>
+              <button>Voir candidature</button>
+            </div>
+          </div>
         `;
 
         container.appendChild(div);
@@ -66,4 +71,8 @@ function ChangerStatut(id_candidature, nvxStatut) {
         alert(`Le statut a été mis à jour : "${nvxStatut}"`);
       }
     });
+
+statutElement.classList.add("statut-change");
+setTimeout(() => statutElement.classList.remove("statut-change"), 400);
+
 }

@@ -18,13 +18,22 @@ main {
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
+  margin-left: 45px;
 }
 
 .titre-container {
-  margin: 50px;
+  margin: 80px;
 }
 
 /* Carte pour chaque candidature */
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* ✅ Centre verticalement */
+  width: 100%;
+}
+
+
 .candidature-card {
   background-color: #fff;
   border-radius: 10px;
@@ -63,12 +72,10 @@ button:hover {
 }
 
 .button-container {
-  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   gap: 10px;
-  align-items: center;
 }
 
 .infos {
@@ -83,7 +90,7 @@ button:hover {
 }
 
 .statut.acceptée {
-  color: rgb(46, 176, 46);
+  color: rgb(255, 255, 255);
   background-color: lightgreen;
 }
 
@@ -96,6 +103,16 @@ button:hover {
   color: yellow;
   background-color: lightgoldenrodyellow;
 }
+
+.statut-change {
+  animation: flash 0.4s ease-in-out;
+}
+
+@keyframes flash {
+  0% { background-color: #fff89a; }
+  100% { background-color: inherit; }
+}
+
 
 /*******************************************************NAVBAR******************************************************/
 /* Liste de navigation dans la sidebar */
