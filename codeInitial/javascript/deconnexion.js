@@ -1,11 +1,37 @@
 function logout() {
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     fetch("http://localhost:8080/deconnexion", {
       method: "POST",
       credentials: "include" 
     }).then(() => {
-      localStorage.empty();
+      alert("Déconnexion réussie")
+      localStorage.clear();
+=======
+=======
+>>>>>>> Stashed changes
+  fetch("http://localhost:8080/deconnexion", {
+    method: "POST",
+    credentials: "include"
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Erreur serveur : " + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Déconnexion réussie :", data.message || "");
+      localStorage.clear();
+      alert("Déconnexion réussie");
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
       window.location.href = "index.html";
-    }).catch(error => {
+    })
+    .catch(error => {
       console.error("Erreur de déconnexion :", error);
+      alert("Erreur pendant la déconnexion");
     });
-  }
+}

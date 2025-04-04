@@ -15,7 +15,7 @@ router.post('/deconnexion', authController.deconnexion);
 
 // Route de candidatures
 router.get('/candidatures/:id_employeur', candidaturesController.getCandidats);
-router.post('/candidature/statut', candidaturesController.updateStatut);
+router.post('/candidatures/statut', candidaturesController.updateStatut);
 
 // Route de stages
 router.post('/stages', stagesController.stage);

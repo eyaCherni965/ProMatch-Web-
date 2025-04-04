@@ -46,7 +46,8 @@ exports.stage = async (req, res) => {
         VALUES (@compagnie, @coordinateur, @nom_departement, @nom_poste, @duree, @desc_poste, @taux_horaire, @adresse, @courriel, @id_employeur, @url_image)
       `);
 
-      return res.status(200).send("Stage déposé !");
+    return res.status(200).send("Stage déposé !");
+
   } catch (err) {
     console.error("Erreur lors du dépot du stage :", err);
     return res.status(500).send("Erreur serveur lors du dépot du stage.");
