@@ -29,5 +29,7 @@ router.post("/inscriptionEtudiant", authController.inscriptionEtudiant);
 // Route pour Statut Étudiant
 router.post("/statutCandidature", candidaturesController.getStatutCandidature)
 
+//Route pour stage -> Android
+router.get('/stages', stagesController.getAllStages);
 
 module.exports = router;
