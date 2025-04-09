@@ -1,7 +1,7 @@
 const { poolPromise, sql } = require('../sql/db');
 
 
-//Affichage de la liste des étudiants
+//Affichage de la liste des étudiants candidats
 
 exports.getCandidats = async (req, res) => {
   const id_employeur = req.params.id_employeur;
@@ -56,3 +56,36 @@ exports.updateStatut = async (req, res) => {
   }
 };
 
+//  Affichage de l'état de la demande des étudiants
+
+exports.getStatutCandidature = async (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1]; // Format: "Bearer <token>"
+
+  if (!token) {
+    return res.status(401).json({ message: "Token manquant" });
+  }
+
+  try {
+    // Vérifie et décode le token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const id_etudiant = decoded.id_etudiant;
+    const pool = await poolPromise;
+
+    const result = await pool.request()
+      .input('id_etudiant', sql.Int, id_etudiant)
+      .query(`
+        SELECT 
+          C.id_candidature,
+          C.statut,
+          S.nom_poste
+        FROM Candidature C
+        JOIN Stage S ON C.id_stage = S.id_stage
+        WHERE C.id_etudiant = @id_etudiant
+      `);
+
+    res.json(result.recordset);
+  } catch (err) {
+    console.error("Erreur lors de la récupération des candidatures :", err);
+    res.status(500).send("Erreur serveur");
+  }
+};

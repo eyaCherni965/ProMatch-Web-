@@ -26,5 +26,8 @@ router.post('/connexionEtudiant', authController.connexionEtudiant);
 //Route pour Inscription Etudiant
 router.post("/inscriptionEtudiant", authController.inscriptionEtudiant);
 
+// Route pour Statut Étudiant
+router.post("/statutCandidature", candidaturesController.getStatutCandidature)
+
 
 module.exports = router;
