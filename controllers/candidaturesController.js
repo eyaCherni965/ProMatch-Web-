@@ -56,10 +56,12 @@ exports.updateStatut = async (req, res) => {
   }
 };
 
+// Android -- Candidatures
+
 //  Affichage de l'état de la demande des étudiants
 
 exports.getStatutCandidature = async (req, res) => {
-  const token = req.headers.authorization?.split(' ')[1]; // Format: "Bearer <token>"
+  const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ message: "Token manquant" });
@@ -69,8 +71,8 @@ exports.getStatutCandidature = async (req, res) => {
     // Vérifie et décode le token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const id_etudiant = decoded.id_etudiant;
-    const pool = await poolPromise;
 
+    const pool = await poolPromise;
     const result = await pool.request()
       .input('id_etudiant', sql.Int, id_etudiant)
       .query(`
@@ -86,6 +88,9 @@ exports.getStatutCandidature = async (req, res) => {
     res.json(result.recordset);
   } catch (err) {
     console.error("Erreur lors de la récupération des candidatures :", err);
+    if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {
+      return res.status(401).json({ message: "Token invalide ou expiré" });
+    }
     res.status(500).send("Erreur serveur");
   }
 };

@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <strong>${candidat.prenom} ${candidat.nom}</strong><br>
               ${candidat.nom_poste}<br>
               ${candidat.url_cv || 'Non disponible'}<br>
-              <span class="statut ${candidat.statut.toLowerCase()}" id="statut-${candidat.id_candidature}">
+              <br><span class="statut ${candidat.statut.toLowerCase()}" id="statut-${candidat.id_candidature}">
               ${candidat.statut}
             </span>
             </div>

@@ -1,5 +1,8 @@
 const { poolPromise, sql } = require('../sql/db');
 
+
+// Dépot de stages
+
 exports.stage = async (req, res) => {
   const {
     compagnie,

@@ -175,14 +175,6 @@ exports.connexionEtudiant = async (req, res) => {
       message: "Connexion réussie",
       token,
       id_etudiant: compte.id_etudiant,
-      email: compte.courriel
-    }, 'ta_clef_secrete_super_secure', { expiresIn: '2h' });
-
-    console.log("Connexion réussie pour :", compte.courriel);
-    return res.status(200).json({
-      message: "Connexion réussie",
-      token,
-      id_etudiant: compte.id_etudiant,
       nom: compte.nom,
       prenom: compte.prenom,
       email: compte.email,
