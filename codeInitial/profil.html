@@ -4,28 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profil - Pro-Match</title>
+
+  <!-- Lien vers les polices -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  
+
   <link rel="stylesheet" href="css/styleProfile.css" />
+  <script src="js/profile.js" defer></script>
 </head>
 <body>
-    <div class="side-profile">
-      <h1>Bonjour: {{ user.name }}</h1>
+
+  <div class="profile-container">
+    <div class="profile-book">
+      <div class="profile-page left-page"></div>
+      <div class="profile-page right-page"></div>
+   
+    <div class="profile-card">
       
+      <h1>Bonjour, {{ user.name }}</h1>
+
+
       <div class="profile-picture">
-        <img src="img/thumbnail_image.png"  />
-        <button>Modifier</button>
+        <img src="img/thumbnail_image.png" alt="Photo de profil">
       </div>
 
-
+  
       <div class="profile-info">
         <h2>Informations personnelles</h2>
-       
-        <p><strong>Email:</strong> {{ user.email }}</p><br><br><br>
-        <p><strong>Téléphone:</strong> {{ user.phone }}</p><br><br><br>
-    </div>
-    </div>
-   
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Compagnie:</strong> {{ user.compagnie }}</p>
+      </div>
 
-  </script>
+      <div class="profile-buttons">
+        <button>Modifier mon mot de passe</button>
+        <button>Modifier mes informations</button>
+        <button>Stage</button>
+      </div>
+      <div class="stage-list" id="stageList"></div>
+    </div>
+  </div>
+
+  <!--Tout ce qui est en lien avec les pop up-->
+  <div class="box-overlay" id="passwordBox">
+    <div class="box">
+      <h3>Modifier votre mot de passe</h3>
+      <input type="password" id="newPassword" placeholder="Nouveau mot de passe" />
+      <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe" />
+      <div class="actions">
+        <button onclick="savePassword()">Enregistrer</button>
+        <button onclick="closeModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-overlay" id="infoBox">
+    <div class="box">
+      <h3>Modifier mes informations</h3>
+      <input type="email" id="newEmail" placeholder="Nouveau email" />
+      <input type="text" id="newCompany" placeholder="Nouvelle compagnie" />
+      <div class="actions">
+        <button onclick="saveInfo()">Enregistrer</button>
+        <button onclick="closeInfoModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-overlay" id="stageBox">
+    <div class="box stage-form-box">
+      <h3>Déposez votre offre de stage</h3>
+      <form onsubmit="saveStage(event)">
+        <div class="columns">
+          <div class="column-left">
+            <ul>
+              <li class="group">
+                <label for="compagnie">Nom de la compagnie :</label>
+                <input type="text" id="compagnie" name="compagnie" required />
+              </li>
+              <li class="group">
+                <label for="dep">Nom du département :</label>
+                <input type="text" id="dep" name="nom_departement" required />
+              </li>
+              <li class="group">
+                <label for="coordo">Coordinateur :</label>
+                <input type="text" id="coordo" name="coordinateur" required />
+              </li>
+              <li class="group">
+                <label for="poste">Titre du poste :</label>
+                <input type="text" id="poste" name="nom_poste" required />
+              </li>
+              <li class="group">
+                <label for="duree">Durée du stage (mois) :</label>
+                <input type="text" id="duree" name="duree" required />
+              </li>
+            </ul>
+          </div>
+          <div class="column-right">
+            <ul>
+              <li class="group">
+                <label for="description">Description du poste :</label>
+                <textarea id="description" name="desc_poste" required></textarea>
+              </li>
+              <li class="group">
+                <label for="adress">Adresse :</label>
+                <input type="text" id="adress" name="adresse" required />
+              </li>
+              <li class="group">
+                <label for="image">Image (URL) :</label>
+                <input type="text" id="image" name="url_image" />
+              </li>
+              <li class="group">
+                <label for="taux_horaire">Taux horaire ($) :</label>
+                <input type="number" min="17.75" max="10000.00" step="0.01" id="taux_horaire" name="taux_horaire" />
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="actions">
+          <button type="submit">Soumettre l'offre</button>
+          <button type="reset">Effacer</button>
+          <button type="button" onclick="closeStageModal()">Annuler</button>
+        </div>
+        <input type="hidden" name="id_employeur" id="id_employeur" />
+        <input type="hidden" name="courriel" id="courriel" />
+      </form>
+    </div>
+  </div>
 
 </body>
 </html>
+
+
