@@ -146,7 +146,7 @@ button:hover {
 
 .boite{
   background-color: transparent;
-  border: 1px solid #4b0000;
+  border: 1px solid url(navbar_footer.css);
   border-radius: 5px;
   padding: 20px;
   flex: 1;
