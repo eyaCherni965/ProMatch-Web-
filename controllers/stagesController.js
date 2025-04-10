@@ -56,3 +56,17 @@ exports.stage = async (req, res) => {
     return res.status(500).send("Erreur serveur lors du dépot du stage.");
   }
 };
+
+// Android -> stage
+
+exports.getAllStages = async (req, res) => {
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request().query("SELECT * FROM Stage");
+
+    res.status(200).json(result.recordset);
+  } catch (err) {
+    console.error("Erreur lors de la récupération des stages :", err);
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};

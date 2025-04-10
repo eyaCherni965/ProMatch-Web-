@@ -42,5 +42,7 @@ router.post("/candidatures/:id_etudiant", candidaturesController.getStatutCandid
 router.get("/profilEtudiant", profilController.profilEtudiant)
 router.post("/profilEtudiant", profilController.updateProfilEtudiant)
 
+//Route pour stage -> Android
+router.get('/stages', stagesController.getAllStages);
 
 module.exports = router;
