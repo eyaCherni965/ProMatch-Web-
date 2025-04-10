@@ -42,30 +42,37 @@
   
   .timeline-container {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
   }
   
 .step-container{
-  
   display: flex;
-  padding: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: auto;
+  gap: 40px;
+  padding: 40px 20px;
+  margin-bottom: 50px;
   
 }
   .step {
-    font-family: roboto;
+    flex: 0 0 auto;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    width: 120px;
-    height: 120px;
-    gap: 20px;
-    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    min-height: 160px;
     background: white;
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    text-align: center;
+ 
   }
   
   .step:hover {
@@ -82,44 +89,6 @@
   .step:hover .icon i {
     transform: scale(1.2);
     color: #3f0404;
-  }
-  
-  .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left:0;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgb(1, 1, 1);
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    padding: 15px 0;
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-  }
-   
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-   
-  .footer-links {
-    margin-top: 10px;
-  }
-   
-  .footer-links a {
-    color: rgb(11, 11, 11);
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-  }
-   
-  .footer-links a:hover {
-    color: #ffcccc;
   }
   
   .swipe-simulateur {

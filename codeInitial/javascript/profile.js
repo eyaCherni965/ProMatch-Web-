@@ -65,20 +65,4 @@ document.addEventListener("DOMContentLoaded", function () {
     alert("Informations mises à jour avec succès");
     closeInfoModal();
   }
-//le bouton "Stage"
-document.addEventListener("DOMContentLoaded", function () {
-    const stageBtn = document.querySelector(".profile-buttons button:nth-of-type(3)");
-    const stageBox = document.getElementById("stageBox");
-  
-    if (stageBtn && stageBox) {
-      stageBtn.addEventListener("click", () => {
-        stageBox.style.display = "flex";
-      });
-    }
-  });
-  
-
-  function closeStageModal() {
-    document.getElementById("stageBox").style.display = "none";
-  }
 
