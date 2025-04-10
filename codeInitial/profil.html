@@ -69,63 +69,6 @@
     </div>
   </div>
 
-  <div class="box-overlay" id="stageBox">
-    <div class="box stage-form-box">
-      <h3>Déposez votre offre de stage</h3>
-      <form onsubmit="saveStage(event)">
-        <div class="columns">
-          <div class="column-left">
-            <ul>
-              <li class="group">
-                <label for="compagnie">Nom de la compagnie :</label>
-                <input type="text" id="compagnie" name="compagnie" required />
-              </li>
-              <li class="group">
-                <label for="dep">Nom du département :</label>
-                <input type="text" id="dep" name="nom_departement" required />
-              </li>
-              <li class="group">
-                <label for="coordo">Coordinateur :</label>
-                <input type="text" id="coordo" name="coordinateur" required />
-              </li>
-              <li class="group">
-                <label for="poste">Titre du poste :</label>
-                <input type="text" id="poste" name="nom_poste" required />
-              </li>
-              <li class="group">
-                <label for="duree">Durée du stage (mois) :</label>
-                <input type="text" id="duree" name="duree" required />
-              </li>
-            </ul>
-          </div>
-          <div class="column-right">
-            <ul>
-              <li class="group">
-                <label for="description">Description du poste :</label>
-                <textarea id="description" name="desc_poste" required></textarea>
-              </li>
-              <li class="group">
-                <label for="adress">Adresse :</label>
-                <input type="text" id="adress" name="adresse" required />
-              </li>
-              <li class="group">
-                <label for="image">Image (URL) :</label>
-                <input type="text" id="image" name="url_image" />
-              </li>
-              <li class="group">
-                <label for="taux_horaire">Taux horaire ($) :</label>
-                <input type="number" min="17.75" max="10000.00" step="0.01" id="taux_horaire" name="taux_horaire" />
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="actions">
-          <button type="submit">Soumettre l'offre</button>
-          <button type="reset">Effacer</button>
-          <button type="button" onclick="closeStageModal()">Annuler</button>
-        </div>
-        <input type="hidden" name="id_employeur" id="id_employeur" />
-        <input type="hidden" name="courriel" id="courriel" />
       </form>
     </div>
   </div>

@@ -218,44 +218,4 @@ body {
   }
 }
 
-/*Liste des stages*/
-.stage-list {
-  margin-top: 40px;
-  text-align: left;
-}
 
-.stage-card {
-  background-color: #ffffff;
-  border-left: 6px solid #4b0000;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.stage-card h4 {
-  margin: 0 0 10px 0;
-  color: #4b0000;
-}
-
-.stage-card p {
-  margin: 4px 0;
-  color: #333;
-  font-size: 14px;
-}
-
-.stage-card button.delete-stage {
-  margin-top: 12px;
-  background-color: #8b1c1c;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.stage-card button.delete-stage:hover {
-  background-color: #a52222;
-}
