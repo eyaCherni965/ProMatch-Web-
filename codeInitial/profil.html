@@ -9,37 +9,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
   
 
-  <link rel="stylesheet" href="css/styleProfile.css" />
-  <script src="./javascript/" defer></script>
+  <link rel="stylesheet" href="css/styleProfile.css"/>
+  <link rel="stylesheet" href="css/navbar_footer.css"/>
+  <script src="javascript/navbar.js"></script>
   <script src="javascript/profile.js" defer></script>
 </head>
 <body>
-
+  <div class="logotxt">
+    <h2>Promatch</h2>
+  </div>
+  <header class="header-acceuil">
+    <button id="menuBtn" class="menu-button">☰</button>
+    <div id="sidebar" class="sidebar">
+      <ul>
+        <button id="closeBtn" class="close-btn">&times;</button>
+        <li><a href="acceuil_TCH099.html">Accueil</a></li>
+        <hr>
+        <li><a href="stages.html">Stages</a></li>
+        <hr>
+        <li><a href="candidatures.html">Candidatures</a></li>
+        <hr>
+        <li><a href="profil.html">Profil</a></li>
+        <hr>
+        <li><a href="login.html">Connexion</a></li>
+        <hr>
+        <li><a onclick="logout()">Déconnexion</a></li>
+        <hr>
+        <li><a href="home.html">EN</a></li>
+      </ul>
+    </div>      
+  </header>
   <div class="profile-container">
     <div class="profile-book">
       <div class="profile-page left-page"></div>
       <div class="profile-page right-page"></div>
    
-    <div class="profile-card">
-      
-      <h1>Bonjour, {{ user.name }}</h1>
-
-
-      <div class="profile-picture">
-        <img src="img/thumbnail_image.png" alt="Photo de profil">
+      <div id="profile-container">
+        <div class="profile-card" id="profileCard"></div>
       </div>
 
-  
-      <div class="profile-info">
-        <h2>Informations personnelles</h2>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Compagnie:</strong> {{ user.compagnie }}</p>
-      </div>
-
-      <div class="profile-buttons">
-        <button>Modifier mon mot de passe</button>
-        <button>Modifier mes informations</button>
-      </div>
       <div class="stage-list" id="stageList"></div>
     </div>
   </div>
@@ -68,9 +76,22 @@
       </div>
     </div>
   </div>
-
-   
-
+  <div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Pro-Match. Tous droits réservés.</p>
+      <div class="footer-links">
+        <a href="acceuil_TCH099.html">Accueil</a>
+        <a href="pourquoi.html">À propos</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
 

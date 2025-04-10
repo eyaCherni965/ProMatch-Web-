@@ -29,28 +29,45 @@ exports.profil = async (req, res) => {
 // Update le statut
 
 exports.updateProfil = async (req, res) => {
+  console.log("Requête reçue :", req.body);
   const { id_employeur, nom, prenom, email, compagnie, mdp } = req.body;
 
   try {
-    const hashedPassword = await bcrypt.hash(mdp, saltRounds);
     const pool = await poolPromise;
 
-    await pool.request()
-      .input('id_employeur', sql.Int, id_employeur)
-      .input('nom', sql.VarChar(50), nom)
-      .input('prenom', sql.VarChar(50), prenom)
-      .input('email', sql.VarChar(100), email)
-      .input('compagnie', sql.VarChar(50), compagnie)
-      .input('mdp', sql.VarChar(255), hashedPassword)
-      .query(`
-        UPDATE Employeur
-        SET nom = @nom,
-            prenom = @prenom,
-            email = @email,
-            compagnie = @compagnie,
-            mdp = @mdp
-        WHERE id_employeur = @id_employeur
-      `);
+    if (mdp && mdp.trim() !== "") {
+      const hashedPassword = await bcrypt.hash(mdp, saltRounds);
+
+      await pool.request()
+        .input('id_employeur', sql.Int, id_employeur)
+        .input('nom', sql.VarChar(50), nom)
+        .input('prenom', sql.VarChar(50), prenom)
+        .input('email', sql.VarChar(100), email)
+        .input('compagnie', sql.VarChar(50), compagnie)
+        .input('mdp', sql.VarChar(255), hashedPassword)
+        .query(`
+          UPDATE Employeur
+          SET email = @email,
+              compagnie = @compagnie,
+              mdp = @mdp
+          WHERE id_employeur = @id_employeur
+        `);
+    } else {
+      await pool.request()
+        .input('id_employeur', sql.Int, id_employeur)
+        .input('nom', sql.VarChar(50), nom)
+        .input('prenom', sql.VarChar(50), prenom)
+        .input('email', sql.VarChar(100), email)
+        .input('compagnie', sql.VarChar(50), compagnie)
+        .query(`
+          UPDATE Employeur
+          SET nom = @nom,
+              prenom = @prenom,
+              email = @email,
+              compagnie = @compagnie
+          WHERE id_employeur = @id_employeur
+        `);
+    }
 
     res.status(200).send("Profil mis à jour !");
   } catch (err) {
@@ -58,7 +75,6 @@ exports.updateProfil = async (req, res) => {
     res.status(500).send("Erreur lors de la mise à jour du profil");
   }
 };
-
 // Android -- profil
 
 

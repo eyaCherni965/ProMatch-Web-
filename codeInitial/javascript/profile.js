@@ -1,105 +1,95 @@
 document.addEventListener("DOMContentLoaded", function () {
   const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
-  console.log("ID récupéré du localStorage :", ID_EMPLOYEUR);
+  const container = document.getElementById('profile-container');
 
   if (!ID_EMPLOYEUR) {
     alert('Vous devez être connecté pour accéder à cette page');
     window.location.href = 'login.html';
     return;
   }
-/*
-  <div class="profile-container">
-    <div class="profile-book">
-      <div class="profile-page left-page"></div>
-      <div class="profile-page right-page"></div>
-   
-    <div class="profile-card">
-      
-      <h1>Bonjour, {{ user.name }}</h1>
 
+  fetch(`/profil/${ID_EMPLOYEUR}`)
+    .then(res => {
+      if (!res.ok) throw new Error(`Erreur HTTP : ${res.status}`);
+      return res.json();
+    })
+    .then(infos => {
+      const { nom, prenom, email, compagnie } = infos[0];
 
-      <div class="profile-picture">
-        <img src="img/thumbnail_image.png" alt="Photo de profil">
-      </div>
+      container.innerHTML = `
+        <div class="profile-book">
+          <div class="profile-page left-page"></div>
+          <div class="profile-page right-page"></div>
+          <div class="profile-card">
+            <h1>Bonjour, ${prenom} ${nom}</h1>
+            <div class="profile-picture">
+              <img src="img/thumbnail_image.png" alt="Photo de profil">
+            </div>
+            <div class="profile-info">
+              <h2>Informations personnelles</h2>
+              <p><strong>Email:</strong> <span id="profileEmail">${email}</span></p>
+              <p><strong>Compagnie:</strong> <span id="profileCompany">${compagnie}</span></p>
+            </div>
+            <div class="profile-buttons">
+              <button id="btnPassword">Modifier mon mot de passe</button>
+              <button id="btnInfo">Modifier mes informations</button>
+            </div>
+            <div class="stage-list" id="stageList"></div>
+          </div>
+        </div>
+      `;
 
-  
-      <div class="profile-info">
-        <h2>Informations personnelles</h2>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Compagnie:</strong> {{ user.compagnie }}</p>
-      </div>
-
-      <div class="profile-buttons">
-        <button>Modifier mon mot de passe</button>
-        <button>Modifier mes informations</button>
-      </div>
-      <div class="stage-list" id="stageList"></div>
-    </div>
-  </div> */
-    // Bouton : Modifier mot de passe
-    const passwordBtn = document.querySelector(".profile-buttons button:nth-of-type(1)");
-    const passwordBox = document.getElementById("passwordBox");
-  
-    if (passwordBtn && passwordBox) {
-      passwordBtn.addEventListener("click", () => {
-        passwordBox.style.display = "flex";
+      // Ajout des événements
+      document.getElementById("btnPassword").addEventListener("click", () => {
+        document.getElementById("passwordBox").style.display = "flex";
       });
-    }
 
-    const infoBtn = document.querySelector(".profile-buttons button:nth-of-type(2)");
-    const infoBox = document.getElementById("infoBox");
-  
-    if (infoBtn && infoBox) {
-      infoBtn.addEventListener("click", () => {
-        infoBox.style.display = "flex";
+      document.getElementById("btnInfo").addEventListener("click", () => {
+        document.getElementById("infoBox").style.display = "flex";
       });
-    }
-  });
-  
+    })
+    .catch(err => {
+      console.error("Erreur lors du chargement du profil :", err);
+      alert("Erreur lors du chargement du profil");
+    });
+});
+// Changer mot de passe
+function savePassword() {
+  const newPass = document.getElementById("newPassword").value;
+  const confirmPass = document.getElementById("confirmPassword").value;
 
-  function closeModal() {
-    document.getElementById("passwordBox").style.display = "none";
-  }
-  
-
-  function closeInfoModal() {
-    document.getElementById("infoBox").style.display = "none";
-  }
-  
-
-  function savePassword() {
-    const newPass = document.getElementById("newPassword").value;
-    const confirmPass = document.getElementById("confirmPassword").value;
-  
-    if (newPass.trim() === "" || confirmPass.trim() === "") {
-      alert("Veuillez remplir tous les champs.");
-      return;
-    }
-  
-    if (newPass !== confirmPass) {
-      alert("Les mots de passe ne correspondent pas.");
-      return;
-    }
-  
-    alert("Mot de passe mis à jour avec succès");
-    closeModal();
-  }
-  
-// Fonction pour enregistrer les informations de l'utilisateur
-  function saveInfo() {
-    const email = document.getElementById("newEmail").value;
-    const company = document.getElementById("newCompany").value;
-  
-    if (email.trim() === "" || company.trim() === "") {
-      alert("Veuillez remplir tous les champs.");
-      return;
-    }
-  
-  
-    document.querySelector(".profile-info p:nth-of-type(1)").innerHTML = `<strong>Email:</strong> ${email}`;
-    document.querySelector(".profile-info p:nth-of-type(2)").innerHTML = `<strong>Compagnie:</strong> ${company}`;
-  
-    alert("Informations mises à jour avec succès");
-    closeInfoModal();
+  if (newPass.trim() === "" || confirmPass.trim() === "") {
+    alert("Veuillez remplir tous les champs.");
+    return;
   }
 
+  if (newPass !== confirmPass) {
+    alert("Les mots de passe ne correspondent pas.");
+    return;
+  }
+
+  const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
+
+  fetch('/updateProfil', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id_employeur: ID_EMPLOYEUR,
+      mdp: newPass
+    })
+  })
+    .then(res => {
+      if (!res.ok) throw new Error("Erreur lors de la mise à jour");
+      return res.text();
+    })
+    .then(data => {
+      alert(data);
+      closeModal();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Erreur lors de la mise à jour du mot de passe");
+    });
+}

@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const bienvenueEl = document.getElementById("bienvenue");
   const deconnexionBtn = document.getElementById("logoutBtn");
 
-  if (!compagnie) {
+  /*if (!compagnie) {
     alert("Vous devez être connecté pour accéder à cette page.");
     window.location.href = "login.html";
     return;
-  }
+  }*/
 
   // Afficher le message de bienvenue
   if (bienvenueEl && prenom) {

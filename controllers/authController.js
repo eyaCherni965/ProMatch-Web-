@@ -99,7 +99,6 @@ exports.connexion = async (req, res) => {
 // Déconnexion
 
 exports.deconnexion = (req, res) => {
-  console.log(" Route POST /deconnexion appelée");
   if (!req.session) {
     return res.status(200).json({
       message: "Aucune session active.",
