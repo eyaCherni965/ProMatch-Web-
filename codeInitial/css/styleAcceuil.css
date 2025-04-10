@@ -132,8 +132,16 @@ button:hover {
  .welcome-message {
   font-size: 24px;
   font-weight: bold;
-  margin: 20px;
-  color: #2b2b2b;
+  margin-top: 20px;
+  color: black;
+}
+
+.logotxt {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4b0000;
+  text-align: right;
 }
 
 /* Boites d'informations */
@@ -146,7 +154,7 @@ button:hover {
 
 .boite{
   background-color: transparent;
-  border: 1px solid url(navbar_footer.css);
+  border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
   flex: 1;
