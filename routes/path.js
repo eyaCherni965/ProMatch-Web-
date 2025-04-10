@@ -22,7 +22,7 @@ router.post('/candidatures/statut', candidaturesController.updateStatut);
 router.post('/stages', stagesController.stage);
 
 // Route profil Employeur
-router.get("/profil", profilController.profil)
+router.get("/profil/:id_employeur", profilController.profil)
 router.post("/profil", profilController.updateProfil)
 
 /********************************************************ROUTES ANDROID ************************************************************************/
