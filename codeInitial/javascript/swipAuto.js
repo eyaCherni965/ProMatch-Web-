@@ -1,8 +1,8 @@
 const cards = [
-  { titre: "Développeur Web - React", lieu: "📍 Montréal • 4 mois" },
-  { titre: "Analyste de données", lieu: "📍 Québec • 6 mois" },
-  { titre: "UI/UX Designer", lieu: "📍 Remote • 3 mois" },
-  { titre: "Stage Cybersécurité", lieu: "📍 Laval • 5 mois" }
+  { titre: "Développeur Web - React", lieu: " Montréal • 4 mois" },
+  { titre: "Analyste de données", lieu: " Québec • 6 mois" },
+  { titre: "UI/UX Designer", lieu: " Remote • 3 mois" },
+  { titre: "Stage Cybersécurité", lieu: " Laval • 5 mois" }
 ];
 
 const card = document.getElementById('stageCard');
