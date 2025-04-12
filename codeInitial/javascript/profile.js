@@ -1,3 +1,8 @@
+let nomGlobal = "";
+let prenomGlobal = "";
+let emailGlobal = "";
+let compagnieGlobal = "";
+
 document.addEventListener("DOMContentLoaded", function () {
   const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
   const container = document.getElementById('profile-container');
@@ -15,6 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(infos => {
       const { nom, prenom, email, compagnie } = infos[0];
+      nomGlobal = nom;
+    prenomGlobal = prenom;
+    emailGlobal = email;
+    compagnieGlobal = compagnie;
 
       container.innerHTML = `
         <div class="profile-book">
@@ -70,13 +79,17 @@ function savePassword() {
 
   const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
 
-  fetch('/updateProfil', {
+  fetch('/profil/updateProfil', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       id_employeur: ID_EMPLOYEUR,
+      nom: nomGlobal,
+      prenom: prenomGlobal,
+      email: emailGlobal,
+      compagnie: compagnieGlobal,
       mdp: newPass
     })
   })
@@ -93,3 +106,16 @@ function savePassword() {
       alert("Erreur lors de la mise à jour du mot de passe");
     });
 }
+
+  const infoBtn = document.querySelector(".profile-buttons button:nth-of-type(2)");
+  const infoBox = document.getElementById("infoBox");
+
+  function closeModal() {
+    document.getElementById("passwordBox").style.display = "none";
+  }
+
+
+  function closeInfoModal() {
+    document.getElementById("infoBox").style.display = "none";
+  }
+

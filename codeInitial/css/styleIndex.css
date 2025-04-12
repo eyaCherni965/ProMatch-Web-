@@ -127,15 +127,14 @@ h3{
 
 *{
   margin: 0;
- padding: 0;
+  padding: 0;
   box-sizing: border-box;
- 
 }
  
 html, body {
   height: 100%;
   width: 100%;
-  overflow: auto;
+  overflow-y: scroll;
 }
  
 .main-container{

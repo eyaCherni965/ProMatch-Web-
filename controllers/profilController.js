@@ -107,31 +107,37 @@ const token = req.headers.authorization?.split(' ')[1];
 }
 }
 
-// Update le profil android
+// Mise à jour du profil android
 
 exports.updateProfilEtudiant = async (req, res) => {
   const { id_etudiant, nom, prenom, email, mdp, url_cv } = req.body;
 
   try {
-    const hashedPassword = await bcrypt.hash(mdp, saltRounds);
     const pool = await poolPromise;
 
-    await pool.request()
+    let query = `
+      UPDATE Etudiant
+      SET nom = @nom,
+          prenom = @prenom,
+          email = @email,
+          url_cv = @url_cv`;
+
+    const request = pool.request()
       .input('id_etudiant', sql.Int, id_etudiant)
       .input('nom', sql.VarChar(50), nom)
       .input('prenom', sql.VarChar(50), prenom)
       .input('email', sql.VarChar(100), email)
-      .input('mdp', sql.VarChar(255), hashedPassword)
-      .input('url_cv', sql.VarChar(255), url_cv)
-      .query(`
-        UPDATE Etudiant
-        SET nom = @nom,
-            prenom = @prenom,
-            email = @email,
-            mdp = @mdp,
-            url_cv = @url_cv
-        WHERE id_etudiant = @id_etudiant
-      `);
+      .input('url_cv', sql.VarChar(255), url_cv);
+
+    if (mdp && mdp.trim() !== "") {
+      const hashedPassword = await bcrypt.hash(mdp, saltRounds);
+      query += `, mdp = @mdp`;
+      request.input('mdp', sql.VarChar(255), hashedPassword);
+    }
+
+    query += ` WHERE id_etudiant = @id_etudiant`;
+
+    await request.query(query);
 
     res.status(200).send("Profil mis à jour !");
   } catch (err) {
