@@ -81,14 +81,15 @@ exports.updateProfil = async (req, res) => {
 // Afficher le profil android
 
 exports.profilEtudiant = async (req, res) => {
-const token = req.headers.authorization?.split(' ')[1];
+  const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ message: "Token manquant" });
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // Utilisez la même clé secrète que celle utilisée pour la signature
+    const decoded = jwt.verify(token, 'ta_clef_secrete_super_secure'); // Ou process.env.JWT_SECRET si correctement défini
     const id_etudiant = decoded.id_etudiant;
 
     const pool = await poolPromise;
@@ -99,7 +100,7 @@ const token = req.headers.authorization?.split(' ')[1];
         WHERE id_etudiant = @id_etudiant
         `);
 
-        res.json(result.recordset);
+        res.json(result.recordset[0]);
   }
   catch (err) {
   console.error("Erreur lors du chargement du profile :", err);

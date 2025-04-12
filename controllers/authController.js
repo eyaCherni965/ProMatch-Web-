@@ -127,7 +127,10 @@ exports.deconnexion = (req, res) => {
   });
 };
 
-// Android Studio -> connexion étudiant
+
+
+//Android
+
 exports.connexionEtudiant = async (req, res) => {
   const { email, mdp } = req.body;
 
@@ -163,28 +166,36 @@ exports.connexionEtudiant = async (req, res) => {
 
     console.log("Connexion réussie pour :", compte.email);
 
-    // Gestion de session avec JWT
+    // Génération du token avec la clé secrète fixe
     const token = jwt.sign({
       id_etudiant: compte.id_etudiant,
-      email: compte.courriel
+      email: compte.email
     }, 'ta_clef_secrete_super_secure', { expiresIn: '2h' });
 
-    console.log("Connexion réussie pour :", compte.courriel);
+    console.log("Token généré :", token);
+
     return res.status(200).json({
+      success: true,
       message: "Connexion réussie",
-      token,
-      id_etudiant: compte.id_etudiant,
-      nom: compte.nom,
-      prenom: compte.prenom,
-      email: compte.email,
-      url_cv: compte.url_cv,
+      token: token,
+      user: {
+        id_etudiant: compte.id_etudiant,
+        nom: compte.nom,
+        prenom: compte.prenom,
+        email: compte.email,
+        url_cv: compte.url_cv
+      }
     });
+    
   } catch (err) {
     console.error("Erreur serveur :", err.message);
-    return res.status(500).json({ message: "Erreur serveur." });
+    return res.status(500).json({ 
+      success: false,
+      message: "Erreur serveur",
+      error: err.message
+    });
   }
 };
-
 // Android Studio -> inscription étudiant
 exports.inscriptionEtudiant = async (req, res) => {
   const { nom, prenom, email, mdp, url_cv } = req.body;
