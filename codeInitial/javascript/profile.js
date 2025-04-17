@@ -79,7 +79,7 @@ function savePassword() {
 
   const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
 
-  fetch('/profil/updateProfil', {
+  fetch('/updateProfil', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
