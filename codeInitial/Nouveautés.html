@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Les Nouveautés du Site</title>
+
+  <!-- CSS uniquement pour la page Nouveautés -->
+  <link rel="stylesheet" href="Nouveaute.css">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <!-- Script navbar -->
+  <script defer src="./javascript/navbar.js"></script>
+  
+</head>
+
+<body class="nouveautes-page">
+
+  <!-- BARRE DE NAVIGATION -->
+  <header class="nouveautes-header">
+    <button id="menuBtn" class="nouveautes-menu-button">☰</button>
+    <div id="sidebar" class="nouveautes-sidebar">
+      <ul>
+        <button id="closeBtn" class="nouveautes-close-btn">&times;</button>
+        <li><a href="acceuil_TCH099.html">Accueil</a></li>
+        <hr>
+        <li><a href="internships.html">Internship</a></li>
+        <hr>
+        <li><a href="applications.html">Applications</a></li>
+        <hr>
+        <li><a href="profile.html">Profile</a></li>
+        <hr>
+        <li><a href="login.html">Login</a></li>
+        <hr>
+        <li><a href="acceuil_TCH099.html">FR</a></li>
+      </ul>
+    </div>      
+  </header>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="nouveautes-main">
+    <!-- SECTION NOUVEAUTÉS -->
+    <section class="section-nouveautes">
+      <div class="nouveautes-container">
+        <h2 class="nouveautes-titre">Nouveautés</h2>
+
+        <div class="swiper nouveautes-swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide nouveautes-slide">
+                  <h3 class="nouveautes-soustitre">1. Swipe pour postuler</h3>
+                  <p class="nouveautes-texte">Glissez vers la droite pour postuler à un stage, ou vers la gauche pour passer.</p>
+                  <img src="./img/511445.png" alt="Icône swipe">
+                </div>
+              
+                <!-- Slide 2 -->
+                <div class="swiper-slide nouveautes-slide">
+                  <h3 class="nouveautes-soustitre">2. Tri par département</h3>
+                  <p class="nouveautes-texte">Filtrez les stages par domaine de génie : logiciel, mécanique, électrique, etc.</p>
+                  <img src="./img/filtre-departement.png" alt="Filtrage par département">
+                </div>
+              
+                <!-- Slide 3 -->
+                <div class="swiper-slide nouveautes-slide">
+                  <h3 class="nouveautes-soustitre">3. Section Favoris</h3>
+                  <p class="nouveautes-texte">Mettez de côté les stages qui vous intéressent pour y revenir plus tard.</p>
+                  <img src="./img/favoris.png" alt="Icône de favoris">
+                </div>
+              
+                <!-- Slide 4 -->
+                <div class="swiper-slide nouveautes-slide">
+                  <h3 class="nouveautes-soustitre">4. Interface modernisée</h3>
+                  <p class="nouveautes-texte">Design fluide, expérience plus agréable et ergonomie revisitée.</p>
+                  <img src="./img/interface-modernisee.png" alt="Aperçu de l'interface" style="width:100%;">
+                </div>
+              </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION À VENIR -->
+    <section id="avenir" class="nouveautes-avenir">
+      <div class="nouveautes-container">
+        <h2>À Venir</h2>
+        <div class="avenir">
+          <h3>1. Système de notification</h3>
+          <p>Bientôt, vous recevrez des notifications personnalisées pour rester informé de l'activité de notre site.</p>
+        </div>
+        <div class="avenir">
+          <h3>2. Personnalisation des profils</h3>
+          <p>Vous pourrez bientôt personnaliser votre profil en fonction de vos préférences et intérêts.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="nouveautes-footer">
+    <p>&copy; 2025 Votre Site Web - Tous droits réservés</p>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper(".nouveautes-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      }
+    });
+  </script>
+  
+</body>
+</html>
