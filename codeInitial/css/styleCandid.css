@@ -14,6 +14,19 @@ main {
   background-color: #f7f7f7;
 }
 
+/*logo*/
+.logo-container {
+  position: absolute;
+  top: 20px;
+  right: 20px; 
+  z-index: 1000;
+}
+
+.logo-img {
+  height: 60px;
+}
+
+
 #liste-container {
   display: flex;
   flex-direction: column;
