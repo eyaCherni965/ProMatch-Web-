@@ -5,7 +5,7 @@
   }
   
 body.nouveautes-page {
-  background-image: url('../../img/Background2.png');
+  background-image: url('../img/Background2.png');
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-size: cover;
     background-repeat:no-repeat;
@@ -14,7 +14,7 @@ body.nouveautes-page {
     padding: 0;
   }
   
-  /* Optionnel: image d’arrière-plan personnalisée */
+
  body.nouveautes-page::before {
   content: "";
   position: fixed;
@@ -22,7 +22,7 @@ body.nouveautes-page {
   left: 0;
   width: 100vw;                /* largeur totale viewport */
   height: 100vh;               /* hauteur totale viewport */
-  background-image: url('../../img/background-custom.jpg');
+  background-image: url('../img/background-custom.jpg');
   background-size: cover;      /* étire pour couvrir tout */
   background-repeat: no-repeat;
   background-position: center center;
@@ -108,7 +108,7 @@ body.nouveautes-page {
   /* ==== Section NOUVEAUTÉS ==== */
   .section-nouveautes {
     padding: 30px 0;
-    background-image: url('./img/Background.png');
+    background-image: url('../img/Background.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
