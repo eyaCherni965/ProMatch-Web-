@@ -1,12 +1,12 @@
-/* ==== CSS global uniquement pour la page Nouveautés ==== */
+/* ==== Style global uniquement pour la page Nouveautés ==== */
 
 * {
     box-sizing: border-box;
   }
   
 body.nouveautes-page {
-    background-image: url('./img/Background2.png');
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('../../img/Background2.png');
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-size: cover;
     background-repeat:no-repeat;
     background-blend-mode: lighten;
@@ -14,16 +14,16 @@ body.nouveautes-page {
     padding: 0;
   }
   
-  
+  /* Optionnel: image d’arrière-plan personnalisée */
  body.nouveautes-page::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;                
-  height: 100vh;               
-  background-image: url('./img/background-custom.jpg');
-  background-size: cover;      /* étire pour couvrir tout supposement hein*/
+  width: 100vw;                /* largeur totale viewport */
+  height: 100vh;               /* hauteur totale viewport */
+  background-image: url('../../img/background-custom.jpg');
+  background-size: cover;      /* étire pour couvrir tout */
   background-repeat: no-repeat;
   background-position: center center;
   opacity: 0.07;
@@ -37,7 +37,7 @@ body.nouveautes-page {
     top: 15px;
     left: 15px;
     font-size: 24px;
-    background-color: transparent !important; /*Jai vu ca sur un site*/
+    background-color: transparent !important;
     border: 2px solid black;
     border-radius: 8px;
     color: black;
@@ -294,7 +294,7 @@ body.nouveautes-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px !important;
+    font-size: 18px !important; /* taille réelle des flèches */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
@@ -303,7 +303,7 @@ body.nouveautes-page {
   
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 20px !important; 
+  font-size: 20px !important; /* taille de la flèche */
   color: #4b0000 !important;
 }
 
