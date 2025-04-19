@@ -6,6 +6,7 @@ html, body {
   background-color: #f2f2f2;
   height: 100vh;
   overflow-y: scroll;
+  background-image: url('../img/Background.png');
 }
 
 

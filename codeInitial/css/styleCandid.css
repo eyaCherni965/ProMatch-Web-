@@ -2,8 +2,8 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: #f7f7f7;
   overflow-y: scroll;
+  background-image: url('../img/Background2.png');
 }
 
 
@@ -11,7 +11,6 @@ main {
   display: flex;
   justify-content: center;
   padding: 2rem;
-  background-color: #f7f7f7;
 }
 
 /*logo*/
@@ -25,7 +24,6 @@ main {
 .logo-img {
   height: 60px;
 }
-
 
 #liste-container {
   display: flex;
@@ -209,3 +207,100 @@ body.sidebar-open .menu-button {
   display: none;
 }
 
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+ /***************************************************************NAVBAR*********************************************************/
+ /* Liste de navigation dans la sidebar */
+ .sidebar ul {
+  list-style-type: none;
+  margin-top: 5px;
+  padding: 0;
+}
+
+/* Liens dans la sidebar */
+.sidebar li a {
+  display: block;
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  
+}
+
+/* Effet au survol */
+.sidebar li a:hover {
+  background-color: #D1C7BD;
+  color: #fff;
+}
+
+/* Bouton menu */
+.menu-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background-color: transparent !important;
+  border: 2px solid black; 
+  border-radius: 8px; 
+  color: black;
+  padding: 4px 8px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background-color 1s ease, color 1s ease, border-color 1s ease;
+}
+
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: #4b0000;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  padding-top: 60px;
+  color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Appliqué seulement quand la sidebar est ouverte */
+.sidebar.open {
+  width: 250px;
+  border-style: solid;
+  border-color: #260000;
+  border-width: 3px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none;
+  font-size: 28px;
+  color: black;
+  cursor: pointer;
+}
+
+body.sidebar-open .menu-button {
+  display: none;
+}
+
+hr {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #260000;
+  border-style: none;
+  border-top: 1px dotted;
+  }
