@@ -28,8 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
       container.innerHTML = '';
 
       candidats.forEach(candidat => {
+        const boutonId = `voir-candidature-${candidat.id_candidature}`;
         const div = document.createElement('div');
         div.className = "candidature-card";
+
         div.innerHTML = `
           <div class="card-content">
             <div class="infos">
@@ -43,14 +45,26 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="button-container">
               <button onclick="ChangerStatut(${candidat.id_candidature}, 'acceptée')">Accepter</button> 
               <button onclick="ChangerStatut(${candidat.id_candidature}, 'refusée')">Refuser</button>
-              <button onclick="window.location.href='https://drive.google.com/file/d/1a0iK3SY9l274766RoT3qlAwV5AsrII9j/view?usp=sharing'">
-                Voir candidature
-              </button>
+              <button id="${boutonId}">Voir candidature</button>
             </div>
           </div>
         `;
 
         container.appendChild(div);
+
+        // Ajout de l'écouteur avec confirmation
+        const voirBtn = document.getElementById(boutonId);
+        if (voirBtn && candidat.url_cv) {
+          voirBtn.addEventListener("click", () => {
+            const confirmation = confirm("Vous allez être redirigé vers un site externe (Google Drive). Voulez-vous continuer ?");
+            if (confirmation) {
+              window.open(candidat.url_cv, "_blank");
+            }
+          });
+        } else if (voirBtn) {
+          voirBtn.disabled = true;
+          voirBtn.textContent = "CV non disponible";
+        }
       });
     })
     .catch(err => {
@@ -70,11 +84,9 @@ function ChangerStatut(id_candidature, nvxStatut) {
       if (statutElement) {
         statutElement.textContent = nvxStatut;
         statutElement.className = `statut ${nvxStatut.toLowerCase()}`; 
+        statutElement.classList.add("statut-change");
+        setTimeout(() => statutElement.classList.remove("statut-change"), 400);
         alert(`Le statut a été mis à jour : "${nvxStatut}"`);
       }
     });
-
-statutElement.classList.add("statut-change");
-setTimeout(() => statutElement.classList.remove("statut-change"), 400);
-
 }
