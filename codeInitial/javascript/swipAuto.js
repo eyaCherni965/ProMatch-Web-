@@ -22,4 +22,4 @@ function showNextCard() {
   }, 1000);
 }
 
-setInterval(showNextCard, 3000); // change toutes les 3 secondes
+setInterval(showNextCard, 5000); // change toutes les 3 secondes
