@@ -2,6 +2,7 @@ let nomGlobal = "";
 let prenomGlobal = "";
 let emailGlobal = "";
 let compagnieGlobal = "";
+let mdpGlobal = "";
 
 document.addEventListener("DOMContentLoaded", function () {
   const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
@@ -19,11 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
       return res.json();
     })
     .then(infos => {
-      const { nom, prenom, email, compagnie } = infos[0];
+      const { nom, prenom, email, compagnie, mdp} = infos[0];
       nomGlobal = nom;
-    prenomGlobal = prenom;
-    emailGlobal = email;
-    compagnieGlobal = compagnie;
+      prenomGlobal = prenom;
+      emailGlobal = email;
+      compagnieGlobal = compagnie;
+      mdpGlobal = mdp;
 
       container.innerHTML = `
         <div class="profile-book">
@@ -119,3 +121,47 @@ function savePassword() {
     document.getElementById("infoBox").style.display = "none";
   }
 
+// Changer autres infos
+function saveInfo() {
+  const newEmail = document.getElementById("newEmail").value;
+  const newComp = document.getElementById("newCompany").value;
+
+  if (newEmail.trim() === "" && newComp.trim() === "") {
+    alert("Veuillez remplir un des champs.");
+    return;
+  }
+
+  const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
+
+  // Met à jour les valeurs globales si nécessaires
+  const updatedEmail = newEmail || emailGlobal;
+  const updatedCompagnie = newComp || compagnieGlobal;
+
+  fetch('/updateProfil', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id_employeur: ID_EMPLOYEUR,
+      nom: nomGlobal,
+      prenom: prenomGlobal,
+      email: updatedEmail,
+      compagnie: updatedCompagnie,
+      mdp: mdpGlobal
+    })
+  })
+  .then(res => {
+    if (!res.ok) throw new Error("Erreur lors de la mise à jour");
+    return res.text();
+  })
+  .then(data => {
+    alert(data);
+    closeInfoModal();
+    location.reload();
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Erreur lors de la mise à jour des informations");
+  });
+}

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnInscrire = document.querySelector('.btn-inscrire');
   const btnConnecter = document.querySelector('.btn-connecter');
   const params = new URLSearchParams(window.location.search);
+
 if (params.get("inscription") === "1") {
   document.querySelector('.login-container').classList.add('active');}
 
@@ -39,6 +40,7 @@ if (params.get("inscription") === "1") {
           localStorage.setItem("compagnie", data.compagnie);
           localStorage.setItem("prenom", data.prenom);
           localStorage.setItem("email", email)
+          localStorage.setItem("mdp", mdp);
           window.location.href = "acceuil_TCH099.html";
         } else {
           alert(data.message);

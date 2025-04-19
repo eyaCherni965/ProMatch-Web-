@@ -43,7 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="button-container">
               <button onclick="ChangerStatut(${candidat.id_candidature}, 'acceptée')">Accepter</button> 
               <button onclick="ChangerStatut(${candidat.id_candidature}, 'refusée')">Refuser</button>
-              <button>Voir candidature</button>
+              <button onclick="window.location.href='https://drive.google.com/file/d/1a0iK3SY9l274766RoT3qlAwV5AsrII9j/view?usp=sharing'">
+                Voir candidature
+              </button>
             </div>
           </div>
         `;
