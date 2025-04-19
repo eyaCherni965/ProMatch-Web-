@@ -14,6 +14,7 @@ exports.getCandidats = async (req, res) => {
       .query(`
         SELECT 
           C.id_candidature,
+          C.id_stage,
           C.statut,
           E.nom,
           E.prenom,
@@ -79,6 +80,7 @@ exports.getStatutCandidature = async (req, res) => {
         SELECT 
           C.id_candidature,
           C.statut,
+          C.id_stage,
           S.nom_poste
         FROM Candidature C
         JOIN Stage S ON C.id_stage = S.id_stage
