@@ -24,6 +24,7 @@ router.post('/stages', stagesController.stage);
 // Route profil Employeur
 router.get("/profil/:id_employeur", profilController.profil)
 router.post("/updateProfil", profilController.updateProfil)
+router.get('/employeur/:id', stagesController.getStagesByEmployeur);
 
 /********************************************************ROUTES ANDROID ************************************************************************/
 // Route pour Connexion Etudiant (Android studio)

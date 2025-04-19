@@ -57,6 +57,27 @@ exports.stage = async (req, res) => {
   }
 };
 
+exports.getStagesByEmployeur = async (req, res) => {
+  const id_employeur = req.params.id;
+
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input("id_employeur", sql.Int, id_employeur)
+      .query(`
+        SELECT id_stage, compagnie, coordinateur, nom_departement, nom_poste, duree, desc_poste, taux_horaire, adresse, courriel
+        FROM Stage
+        WHERE id_employeur = @id_employeur
+      `);
+
+    res.json(result.recordset);
+  } catch (err) {
+    console.error("Erreur récupération stages :", err);
+    res.status(500).send("Erreur serveur lors du chargement des stages.");
+  }
+};
+
+
 // Android -> stage
 
 exports.getAllStages = async (req, res) => {

@@ -14,13 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  // Charger les infos du profil
   fetch(`/profil/${ID_EMPLOYEUR}`)
     .then(res => {
       if (!res.ok) throw new Error(`Erreur HTTP : ${res.status}`);
       return res.json();
     })
     .then(infos => {
-      const { nom, prenom, email, compagnie, mdp} = infos[0];
+      const { nom, prenom, email, compagnie, mdp } = infos[0];
       nomGlobal = nom;
       prenomGlobal = prenom;
       emailGlobal = email;
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       `;
 
-      // Ajout des événements
+      // Boutons modales
       document.getElementById("btnPassword").addEventListener("click", () => {
         document.getElementById("passwordBox").style.display = "flex";
       });
@@ -58,13 +59,57 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("btnInfo").addEventListener("click", () => {
         document.getElementById("infoBox").style.display = "flex";
       });
+
+      // Charger les stages déposés
+      fetch(`/employeur/${ID_EMPLOYEUR}`)
+        .then(res => {
+          if (!res.ok) throw new Error("Erreur lors de la récupération des stages");
+          return res.json();
+        })
+        .then(stages => {
+          const stageList = document.getElementById("stageList");
+
+          if (stages.length === 0) {
+            stageList.innerHTML = "<p>Aucun stage déposé pour l'instant.</p>";
+            return;
+          }
+
+          let html = `
+            <hr style="margin-top: 40px; margin-bottom: 20px;">
+            <h2 style="margin-top: 30px; text-align: center; font-size: 28px; color: #4b0000;">
+              Mes stages déposés
+            </h2>
+            <ul style="padding: 0;">`;
+
+          stages.forEach(stage => {
+            html += `
+              <li class="stage-item">
+                <strong>${stage.nom_poste}</strong><br>
+                ${stage.desc_poste}<br>
+                <em class="informations"> Coordinateur : ${stage.coordinateur} — Nom du département : ${stage.nom_departement}</em><br>
+                <em>${stage.duree} mois</em><br>
+                <em>Taux horaire de ${stage.taux_horaire} $/h</em><br>
+                <span>${stage.adresse}</span><br>
+                <p>ID du stage : ${stage.id_stage}</p><hr>
+              </li>
+            `;
+          });
+          html += "</ul>";
+
+          stageList.innerHTML = html;
+        })
+        .catch(err => {
+          console.error("Erreur chargement stages :", err);
+          document.getElementById("stageList").innerHTML = "<p>Erreur lors du chargement des stages.</p>";
+        });
     })
     .catch(err => {
       console.error("Erreur lors du chargement du profil :", err);
       alert("Erreur lors du chargement du profil");
     });
 });
-// Changer mot de passe
+
+// Modifier mot de passe
 function savePassword() {
   const newPass = document.getElementById("newPassword").value;
   const confirmPass = document.getElementById("confirmPassword").value;
@@ -109,19 +154,16 @@ function savePassword() {
     });
 }
 
-  const infoBtn = document.querySelector(".profile-buttons button:nth-of-type(2)");
-  const infoBox = document.getElementById("infoBox");
+// Fermer modales
+function closeModal() {
+  document.getElementById("passwordBox").style.display = "none";
+}
 
-  function closeModal() {
-    document.getElementById("passwordBox").style.display = "none";
-  }
+function closeInfoModal() {
+  document.getElementById("infoBox").style.display = "none";
+}
 
-
-  function closeInfoModal() {
-    document.getElementById("infoBox").style.display = "none";
-  }
-
-// Changer autres infos
+// Modifier infos perso
 function saveInfo() {
   const newEmail = document.getElementById("newEmail").value;
   const newComp = document.getElementById("newCompany").value;
@@ -132,8 +174,6 @@ function saveInfo() {
   }
 
   const ID_EMPLOYEUR = localStorage.getItem('id_employeur');
-
-  // Met à jour les valeurs globales si nécessaires
   const updatedEmail = newEmail || emailGlobal;
   const updatedCompagnie = newComp || compagnieGlobal;
 
@@ -151,17 +191,17 @@ function saveInfo() {
       mdp: mdpGlobal
     })
   })
-  .then(res => {
-    if (!res.ok) throw new Error("Erreur lors de la mise à jour");
-    return res.text();
-  })
-  .then(data => {
-    alert(data);
-    closeInfoModal();
-    location.reload();
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Erreur lors de la mise à jour des informations");
-  });
+    .then(res => {
+      if (!res.ok) throw new Error("Erreur lors de la mise à jour");
+      return res.text();
+    })
+    .then(data => {
+      alert(data);
+      closeInfoModal();
+      location.reload();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Erreur lors de la mise à jour des informations");
+    });
 }

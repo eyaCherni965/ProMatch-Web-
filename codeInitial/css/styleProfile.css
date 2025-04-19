@@ -4,7 +4,8 @@ html, body {
   padding: 0;
   font-family: 'Poppins', sans-serif;
   background-color: #f2f2f2;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   overflow-y: scroll;
   background-image: url('../img/Background.png');
 }
@@ -13,12 +14,14 @@ html, body {
 .profile-book {
   position: relative;
   width: 100vw;
-  height: 100vh;
-  background: linear-gradient(to right, #f2f2f2 50%, #f4f4f4 50%);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+  padding-bottom: 100px; 
 }
 
 .profile-page {
@@ -218,5 +221,27 @@ html, body {
     opacity: 1;
   }
 }
+
+/******************AFFICHAGE DES STAGES PROPOSÉS***********************/
+.stage-item {
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  list-style: none;
+}
+
+.informations {
+  font-style: normal;
+  font-weight: 600;
+  color: #4b0000;
+  background-color: #fcecec;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+
 
 
