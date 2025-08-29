@@ -52,22 +52,13 @@ JWT_SECRET=...
 
 
 Lancer le serveur :
-
 node index.js
-
-
 Accéder à l’application via :
-
 http://localhost:3000
 
 ## Références
-
 W3Schools – Navigation Bar CSS
-
 Node.js Foundation – Node.js
-
 FreeFrontend – Exemples CSS
-
 Figma – Mockups & Logos
-
 CodeHal & Sheryians Coding – inspirations pour la page index et la page connexion
