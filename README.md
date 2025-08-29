@@ -1,4 +1,3 @@
-README – Web (ProMatch-Web)
 #  ProMatch – Web (Employeurs)
 
 ##  Description
@@ -57,8 +56,8 @@ Accéder à l’application via :
 http://localhost:3000
 
 ## Références
-W3Schools – Navigation Bar CSS
-Node.js Foundation – Node.js
-FreeFrontend – Exemples CSS
-Figma – Mockups & Logos
-CodeHal & Sheryians Coding – inspirations pour la page index et la page connexion
+[W3Schools – Navigation Bar CSS]
+[Node.js Foundation – Node.js]
+[FreeFrontend – Exemples CSS]
+[Figma – Mockups & Logos]
+[CodeHal & Sheryians Coding – inspirations pour la page index et la page connexion]
