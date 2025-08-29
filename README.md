@@ -13,7 +13,7 @@ Eya Cherni, Jyotsna Bhunjun, Éléa Charier,Aurélie Fidélia, Sara Hamed & Neda
 - Connexion / Inscription employeur
 - Création et gestion d’offres de stage
 - Consultation et analyse des candidatures reçues
-- Accès aux CVs des étudiants
+- Accès aux CV des étudiants
 - Modification du profil et du mot de passe
 - Pages statiques : présentation, pourquoi, comment, nouveautés
 
